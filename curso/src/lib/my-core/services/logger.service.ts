@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+
+export const ERROR_LEVEL = new InjectionToken<string>('ERROR_LEVEL')
 
 @Injectable(
   //   {
@@ -6,26 +8,38 @@ import { Injectable } from '@angular/core';
   // }
 )
 export class LoggerService {
+  private nivel: number = Number.MAX_VALUE
 
-  constructor() { }
+  constructor(@Optional() @Inject(ERROR_LEVEL) nivel?: number) {
+    if (nivel || nivel == 0)
+      this.nivel = nivel
+  }
 
   public error(msg: string): void {
-    console.error(msg)
+    if (this.nivel > 0) {
+      console.error(msg)
+    }
   }
 
   public warn(msg: string): void {
-    console.warn(msg)
+    if (this.nivel > 1) {
+      console.warn(msg)
+    }
   }
 
   public info(msg: string): void {
-    if (console.info) {
-      console.info(msg)
-    } else {
-      console.log(msg)
+    if (this.nivel > 2) {
+      if (console.info) {
+        console.info(msg)
+      } else {
+        console.log(msg)
+      }
     }
   }
 
   public log(msg: string): void {
-    console.log(msg)
+    if (this.nivel > 3) {
+      console.log(msg)
+    }
   }
 }
