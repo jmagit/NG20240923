@@ -9,15 +9,18 @@ import { SecurityModule } from './security';
 import { CommonComponentsModule } from './common-components';
 import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
 import { environment } from 'src/environments/environment';
+import { CommonServicesModule } from './common-services';
+import { DemosComponent } from './demos/demos.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DemosComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
     AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
-    MyCoreModule
+    MyCoreModule, CommonServicesModule,
   ],
   providers: [
     LoggerService,
