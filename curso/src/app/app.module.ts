@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
 import { CommonComponentsModule } from './common-components';
-import { MyCoreModule } from '@my/core';
+import { LoggerService, MyCoreModule } from '@my/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,9 @@ import { MyCoreModule } from '@my/core';
     AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
     MyCoreModule
   ],
-  providers: [],
+  providers: [
+    LoggerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
