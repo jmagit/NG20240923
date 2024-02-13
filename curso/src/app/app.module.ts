@@ -11,11 +11,13 @@ import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
 import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
+import { DinamicoComponent } from './dinamico/dinamico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
+    DinamicoComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
