@@ -79,8 +79,8 @@ export class CalculadoraComponent implements OnInit {
     } else if (this.miPantalla.indexOf('.') === -1) {
       this.miPantalla += '.';
     } else {
-      // this.notify.add('Ya está la coma', NotificationType.warn)
-      this.log.warn('Ya está la coma');
+      this.notify.add('Ya está la coma', NotificationType.warn)
+      // this.log.warn('Ya está la coma');
     }
   }
 
@@ -101,7 +101,7 @@ export class CalculadoraComponent implements OnInit {
 
   calcula(value: string): void {
     if ('+-*/='.indexOf(value) == -1) {
-      this.log.error(`Operacion no soportada: ${value}`);
+      this.log.error(`Operación no soportada: ${value}`);
       return;
     }
 
@@ -133,14 +133,14 @@ export class CalculadoraComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    // if (this.init) {
-    //   this.ponOperando(this.init);
-    // }
+    if (this.init) {
+      this.ponOperando(this.init);
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.init) {
-      this.ponOperando(this.init.toString());
-    }
+    // if (this.init) {
+    //   this.ponOperando(this.init.toString());
+    // }
   }
 
 }
