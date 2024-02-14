@@ -102,6 +102,7 @@ export class CalculadoraComponent implements OnInit {
   calcula(value: string): void {
     if ('+-*/='.indexOf(value) == -1) {
       this.log.error(`Operación no soportada: ${value}`);
+      this.notify.add(`Operación no soportada: ${value}`);
       return;
     }
 

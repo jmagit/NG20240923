@@ -5,7 +5,8 @@ import { NotificationService, NotificationType } from '../common-services';
 @Component({
   selector: 'app-demos',
   templateUrl: './demos.component.html',
-  styleUrls: ['./demos.component.css']
+  styleUrls: ['./demos.component.css'],
+  // providers: [ NotificationService, ]
 })
 export class DemosComponent implements OnInit, OnDestroy {
   private suscriptor: Unsubscribable | undefined;
