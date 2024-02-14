@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   ERROR_LEVEL: 0,
+  securityApiURL: 'http://localhost:4321/',
 };
 
 /*
