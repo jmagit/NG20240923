@@ -5,19 +5,23 @@
 <form #miForm="ngForm">
   <div>
     <label for="id">código:</label>
-    <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel">
+    <input type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel"
+      required>
   </div>
   <div>
     <label for="nombre">nombre:</label>
-    <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel">
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"
+      required minlength="2" maxlength="10">
   </div>
   <div>
     <label for="apellidos">apellidos:</label>
-    <input type="text" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos" #apellidos="ngModel">
+    <input type="text" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos" #apellidos="ngModel"
+      minlength="2" maxlength="10">
   </div>
   <div>
     <label for="edad">edad:</label>
-    <input type="number" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel">
+    <input type="number" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel"
+      min="16" max="67">
   </div>
   <div>
     <label for="fecha">fecha:</label>
@@ -27,8 +31,12 @@
     <label for="nif">nif:</label>
     <input type="text" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel">
   </div>
+  <div>
+    <label for="correo">correo:</label>
+    <input type="email" id="correo" name="correo" [(ngModel)]="elemento.correo" #correo="ngModel" email>
+  </div>
   <p>
-    <input type="button" value="enviar" (click)="send()">
+    <input type="button" value="enviar" (click)="send()" [disabled]="miForm.invalid">
     <input type="button" value="volver" (click)="cancel()">
   </p>
 </form>

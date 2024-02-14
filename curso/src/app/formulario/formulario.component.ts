@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent {
   modo: 'add' | 'edit' = 'add'
-  elemento: any = { id: 0, nombre: 'Pepito', apellidos: 'Grillo', edad: 99, fecha: '2000-01-01', nif: '12345678z'}
+  elemento: any = {}
 
   constructor() { }
 
@@ -17,7 +17,7 @@ export class FormularioComponent {
   }
 
   edit(id: number) {
-    this.elemento = { id, nombre: 'Pepito', apellidos: 'Grillo', edad: 99, fecha: '2000-01-01', nif: '12345678z'}
+    this.elemento = { id, nombre: 'Pepito', apellidos: 'Grillo', edad: 99, fecha: '2000-01-01', nif: '12345678z', correo: 'pg@example.com'}
     this.modo = 'edit'
   }
 
