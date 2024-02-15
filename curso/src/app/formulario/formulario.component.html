@@ -12,7 +12,7 @@
   <div>
     <label for="nombre">nombre:</label>
     <input type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"
-      required minlength="2" maxlength="10">
+      required minlength="2" maxlength="10" upp>
     <output class="error" [hidden]="nombre.valid">{{nombre.errors | errormsg}}</output>
   </div>
   <div>
@@ -35,12 +35,12 @@
   <div>
     <label for="nif">nif:</label>
     <input type="text" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
-      pattern="^\d{1,8}[A-Za-z]$">
+      pattern="^\d{1,8}[A-Za-z]$" nifnie>
     <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg:'Tiene que tener entre 1 y 8 dígitos, terminado en una letra'}}</output>{{nif.errors | json}}
   </div>
   <div>
     <label for="correo">correo:</label>
-    <input type="email" id="correo" name="correo" [(ngModel)]="elemento.correo" #correo="ngModel" email>
+    <input type="email" id="correo" name="correo" [(ngModel)]="elemento.correo" #correo="ngModel">
     <output class="error" [hidden]="correo.valid">{{correo.errors | errormsg}}</output>
   </div>
   <p>

@@ -27,7 +27,7 @@ export class NIFNIEValidator implements Validator {
 export function uppercaseValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     if (!control.value) { return null; }
-    return control.value === control.value.toUpperCase() ? null : { uppercase: 'Debe estar en mayúsculas' }
+    return control.value === control.value.toString().toUpperCase() ? null : { uppercase: 'Tiene que estar en mayúsculas' }
   };
 }
 @Directive({
