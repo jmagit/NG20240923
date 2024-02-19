@@ -22,6 +22,7 @@ import GraficoSvgComponent from './grafico-svg/grafico-svg.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
+import { ContactosModule } from './contactos';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { AjaxWaitInterceptor } from './main/ajax-wait';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
-    MyCoreModule, CommonServicesModule,
+    MyCoreModule, CommonServicesModule, ContactosModule,
   ],
   providers: [
     LoggerService,

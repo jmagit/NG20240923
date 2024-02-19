@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomeComponent } from '../main';
 import { DemosComponent } from '../demos/demos.component';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import GraficoSvgComponent from '../grafico-svg/grafico-svg.component';
 import { FormularioComponent } from '../formulario/formulario.component';
+import { ContactosComponent } from '../contactos';
 
 @Component({
   selector: 'app-dinamico',
@@ -12,10 +13,11 @@ import { FormularioComponent } from '../formulario/formulario.component';
 })
 export class DinamicoComponent {
   menu = [
-    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent },
+    { texto: 'contactos', icono: 'fa-solid fa-address-book', componente: ContactosComponent },
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
-    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent },
+    { texto: 'demos', icono: 'fa-solid fa-person-chalkboard', componente: DemosComponent },
     { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
+    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent },
     { texto: 'gráfico', icono: 'fa-solid fa-image', componente: GraficoSvgComponent},
   ]
   actual: any = this.menu[0].componente
