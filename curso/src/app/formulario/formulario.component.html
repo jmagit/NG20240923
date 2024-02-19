@@ -5,9 +5,14 @@
 <form #miForm="ngForm">
   <div class="mb-2">
     <label class="form-label" for="id">código:</label>
-    <input class="form-control" type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel"
-      required min="0">
-    <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output>
+    <ng-container *ngIf="modo === 'add'">
+      <input class="form-control" type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required
+        min="0">
+      <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output>
+    </ng-container>
+    <ng-container *ngIf="modo === 'edit'">
+      <output id="id" [textContent]="elemento.id"></output>
+    </ng-container>
   </div>
   <div class="mb-2">
     <label class="form-label" for="nombre">nombre:</label>
@@ -17,14 +22,14 @@
   </div>
   <div class="mb-2">
     <label class="form-label" for="apellidos">apellidos:</label>
-    <input class="form-control" type="text" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos" #apellidos="ngModel"
-      minlength="2" maxlength="10">
+    <input class="form-control" type="text" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos"
+      #apellidos="ngModel" minlength="2" maxlength="10">
     <output class="error" [hidden]="apellidos.valid">{{apellidos.errors | errormsg}}</output>
   </div>
   <div class="mb-2">
     <label class="form-label" for="edad">edad:</label>
-    <input class="form-control" type="number" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel"
-      min="16" max="67">
+    <input class="form-control" type="number" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel" min="16"
+      max="67">
     <output class="error" [hidden]="edad.valid">{{edad.errors | errormsg}}</output>
   </div>
   <div class="mb-2">
@@ -36,7 +41,8 @@
     <label class="form-label" for="nif">nif:</label>
     <input class="form-control" type="text" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
       pattern="^\d{1,8}[A-Za-z]$" nifnie>
-    <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg:'Tiene que tener entre 1 y 8 dígitos, terminado en una letra'}}</output>{{nif.errors | json}}
+    <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg:'Tiene que tener entre 1 y 8 dígitos, terminado
+      en una letra'}}</output>{{nif.errors | json}}
   </div>
   <div class="mb-2">
     <label class="form-label" for="correo">correo:</label>

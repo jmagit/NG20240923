@@ -41,8 +41,8 @@ import { AjaxWaitInterceptor } from './main/ajax-wait';
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     { provide: LOCALE_ID, useValue: 'es-ES'},
-    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
   ],
   bootstrap: [AppComponent]
 })
