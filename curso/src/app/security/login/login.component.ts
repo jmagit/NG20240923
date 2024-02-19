@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/common-services';
 })
 export class LoginComponent implements OnInit {
   txtButon = 'Log In';
-  txtUsuario = 'admin';
+  txtUsuario = 'adm@example.com';
   txtPassword = 'P@$$w0rd';
 
   constructor(public loginSrv: LoginService, private notify: NotificationService, private router: Router) { }

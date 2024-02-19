@@ -57,7 +57,7 @@ export class LoginService {
 
   login(usr: string, pwd: string) {
     return new Observable(observable =>
-      this.http.post<LoginResponse>(environment.securityApiURL + 'login', { name: usr, password: pwd })
+      this.http.post<LoginResponse>(environment.securityApiURL + 'login', { username: usr, password: pwd })
         .subscribe({
           next: data => {
             if (data.success === true) {

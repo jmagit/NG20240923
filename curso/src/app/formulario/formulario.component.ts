@@ -1,9 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from '../common-services';
+import { AUTH_REQUIRED } from '../security';
 
 export abstract class RESTDAOService<T, K> {
   protected baseUrl = environment.apiURL;
@@ -30,7 +31,7 @@ export abstract class RESTDAOService<T, K> {
 @Injectable({ providedIn: 'root' })
 export class PersonasDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-    super(http, 'personas')
+    super(http, 'personas', { context: new HttpContext().set(AUTH_REQUIRED, true), })
   }
 
 }
