@@ -40,8 +40,8 @@
     <div class="form-group col-md-2">
       <label class="form-label" for="telefono">Teléfono:</label>
       <input class="form-control" [class.is-invalid]="telefono.invalid" type="tel" name="telefono" id="telefono"
-        [(ngModel)]="VM.Elemento.telefono" #telefono="ngModel" maxlength="11">
-      <!-- pattern="^(\d{3}\s){2}\d{3}$" <div class="invalid-feedback" [hidden]="!telefono.hasError('maxlength')">
+        [(ngModel)]="VM.Elemento.telefono" #telefono="ngModel" maxlength="11" pattern="^(\d{3}\s){2}\d{3}$">
+      <!-- <div class="invalid-feedback" [hidden]="!telefono.hasError('maxlength')">
         No debe tener mas de 9 dígitos</div> -->
       <output class="error" [hidden]="telefono.valid">{{telefono.errors | errormsg:'El formato debe ser: 555 999 999'}}</output>
     </div>
