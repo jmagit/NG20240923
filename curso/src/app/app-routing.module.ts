@@ -4,27 +4,29 @@ import { HomeComponent } from './main';
 import { DemosComponent } from './demos/demos.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
-import { BlogListComponent, BlogAddComponent, BlogEditComponent, BlogViewComponent } from './blog';
+// import { BlogListComponent, BlogAddComponent, BlogEditComponent, BlogViewComponent } from './blog';
 import { PageNotFoundComponent } from './main/page-not-found/page-not-found.component';
+import { AuthGuard } from './security';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'inicio', component: HomeComponent, },
   { path: 'demos', component: DemosComponent, },
-  { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent, },
+  { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent, data: { pageTitle: 'calculadora'}},
   { path: 'contactos', component: ContactosListComponent },
   { path: 'contactos/add', component: ContactosAddComponent },
   { path: 'contactos/:id/edit', component: ContactosEditComponent },
   { path: 'contactos/:id', component: ContactosViewComponent },
   { path: 'contactos/:id/:kk', component: ContactosViewComponent },
   { path: 'alysia/baxendale', redirectTo: '/contactos/43' },
-  { path: 'blog', children: [
-    { path: '', component: BlogListComponent },
-    { path: 'add', component: BlogAddComponent },
-    { path: ':id/edit', component: BlogEditComponent },
-    { path: ':id', component: BlogViewComponent },
-    { path: ':id/:kk', component: BlogViewComponent },
-  ]},
+  // { path: 'blog', children: [
+  //   { path: '', component: BlogListComponent },
+  //   { path: 'add', component: BlogAddComponent },
+  //   { path: ':id/edit', component: BlogEditComponent },
+  //   { path: ':id', component: BlogViewComponent },
+  //   { path: ':id/:kk', component: BlogViewComponent },
+  // ], canActivateChild: [AuthGuard]},
+  { path: 'blog', loadChildren: () => import('./blog/modulo.module').then(mod => mod.BlogModule), canActivateChild: [AuthGuard]},
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule) },
   { path: '404.html', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }

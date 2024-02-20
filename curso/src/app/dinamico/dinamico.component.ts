@@ -5,7 +5,7 @@ import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import GraficoSvgComponent from '../grafico-svg/grafico-svg.component';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { ContactosComponent } from '../contactos';
-import { BlogComponent } from '../blog';
+// import { BlogComponent } from '../blog';
 
 @Component({
   selector: 'app-dinamico',
@@ -14,7 +14,7 @@ import { BlogComponent } from '../blog';
 })
 export class DinamicoComponent {
   menu = [
-    { texto: 'blog', icono: 'fa-solid fa-blog', componente: BlogComponent },
+    // { texto: 'blog', icono: 'fa-solid fa-blog', componente: BlogComponent },
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
     { texto: 'demos', icono: 'fa-solid fa-person-chalkboard', componente: DemosComponent },
     { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
