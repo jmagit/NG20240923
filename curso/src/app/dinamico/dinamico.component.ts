@@ -5,6 +5,7 @@ import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import GraficoSvgComponent from '../grafico-svg/grafico-svg.component';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { ContactosComponent } from '../contactos';
+import { BlogComponent } from '../blog';
 
 @Component({
   selector: 'app-dinamico',
@@ -13,11 +14,12 @@ import { ContactosComponent } from '../contactos';
 })
 export class DinamicoComponent {
   menu = [
-    { texto: 'contactos', icono: 'fa-solid fa-address-book', componente: ContactosComponent },
+    { texto: 'blog', icono: 'fa-solid fa-blog', componente: BlogComponent },
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
     { texto: 'demos', icono: 'fa-solid fa-person-chalkboard', componente: DemosComponent },
     { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
     { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent },
+    { texto: 'contactos', icono: 'fa-solid fa-address-book', componente: ContactosComponent },
     { texto: 'gráfico', icono: 'fa-solid fa-image', componente: GraficoSvgComponent},
   ]
   actual: any = this.menu[0].componente
