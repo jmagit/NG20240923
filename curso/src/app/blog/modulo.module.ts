@@ -6,6 +6,7 @@ import { MyCoreModule } from 'src/lib/my-core';
 import { CommonServicesModule } from '../common-services';
 import { BlogComponent, BLOG_COMPONENTES, BlogAddComponent, BlogEditComponent, BlogListComponent, BlogViewComponent } from './componente.component';
 import {PaginatorModule} from 'primeng/paginator';
+import {EditorModule} from 'primeng/editor';
 import { CommonComponentsModule } from '../common-components';
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   imports: [
     CommonModule, FormsModule, RouterModule.forChild(routes),
     MyCoreModule, CommonServicesModule,
-    PaginatorModule, CommonComponentsModule, MyCoreModule,
+    PaginatorModule, CommonComponentsModule, MyCoreModule, EditorModule,
   ]
 })
 export class BlogModule { }
