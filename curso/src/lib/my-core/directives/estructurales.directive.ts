@@ -27,9 +27,9 @@ export class UnlessDirective {
   selector: '[select]',
 })
 export class SelectDirective implements OnChanges, DoCheck {
-  @Input({ required: true }) selectFrom!: any[];
-  @Input() selectOrder?: any
+  @Input() selectFrom!: any[];
   @Input() selectWhere = (_item: any) => true;
+  @Input() selectOrder?: any
 
   private orderBy = new OrderByPipe()
   private cache = ''

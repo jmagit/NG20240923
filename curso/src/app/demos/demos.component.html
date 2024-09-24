@@ -57,6 +57,13 @@
 <p [hidden]="!visible" myShadow>Ahora me ves</p>
 <p [myShow]="visible">Ahora me ves (myShow)</p>
 <p *ngIf="visible">Ahora existo</p>
+
+<p *myUnless="visible">Ahora soy unless</p>
+
+<ng-template [myUnless]="visible">
+<p>La plantilla</p>
+</ng-template>
+
 <p [ngClass]="estetica">
   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
   Eligendi, asperiores aspernatur.
@@ -73,6 +80,13 @@
     {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
   </li>
 </ul>
+<ol>
+  <ng-template ngFor let-item [ngForOf]="listado" let-items="ngForOf" let-ind="index" let-fondo="odd">
+    <li [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
+      {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
+    </li>
+  </ng-template>
+</ol>
 <p>
   <select [(ngModel)]="idProvincia">
     <option value="">--Elige opción--</option>
