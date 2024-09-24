@@ -90,4 +90,7 @@ export class DemosComponent implements OnInit, OnDestroy {
     });
   }
 
+  filtro(ele: any) {
+    return ele.id > 2;
+  }
 }

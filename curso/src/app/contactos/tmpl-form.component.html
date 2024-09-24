@@ -54,6 +54,12 @@
         <span [hidden]="!email.hasError('email')">Debe ser un correo electrónico. </span>
       </div>
     </div>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="iban">IBAN:</label>
+      <input class="form-control" [class.is-invalid]="iban.invalid" type="iban" name="iban" id="iban"
+        [(ngModel)]="VM.Elemento.iban" #iban="ngModel" iban>
+      <output class="error" [myShowErrors]="iban.errors"></output>
+    </div>
     <div class="form-group col-md-2">
       <label class="form-label" for="nacimiento">F. Nacimiento:</label>
       <input class="form-control" type="date" name="nacimiento" id="nacimiento" [(ngModel)]="VM.Elemento.nacimiento"

@@ -1,5 +1,6 @@
 /* eslint-disable @angular-eslint/directive-selector */
-import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
+import { ErrorMessagePipe } from '../pipes/cadenas.pipe';
 
 @Directive({  selector: `[winConfirm]` })
 export class WindowConfirmDirective {
@@ -25,4 +26,27 @@ export class ShadowDirective {
   }
 }
 
-export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ShadowDirective, ]
+@Directive({
+  selector: '[myShowErrors]'
+})
+export class ShowErrorsDirective implements OnChanges {
+  private pipe = new ErrorMessagePipe();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input('myShowErrors') errors: any = undefined;
+  // eslint-disable-next-line @angular-eslint/no-input-rename
+  @Input('pattern-msg') patternMsg?: string = undefined;
+  @HostBinding('textContent') mensaje: string = '';
+  @HostBinding('hidden') hidden: boolean = false;
+
+  ngOnChanges(_changes: SimpleChanges): void {
+    if (!this.errors) {
+      this.hidden = true;
+      return;
+    }
+    this.mensaje = this.patternMsg ? this.pipe.transform(this.errors, this.patternMsg) : this.pipe.transform(this.errors);
+    this.hidden = this.mensaje === '';
+  }
+}
+
+export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ShadowDirective, ShowErrorsDirective, ]

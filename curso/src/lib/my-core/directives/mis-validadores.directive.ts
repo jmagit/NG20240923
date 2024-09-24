@@ -1,6 +1,7 @@
 /* eslint-disable @angular-eslint/directive-selector */
 import { Directive, ElementRef, forwardRef } from '@angular/core';
 import { ValidatorFn, AbstractControl, NG_VALIDATORS, Validator, ValidationErrors } from '@angular/forms';
+import isIBAN from 'validator/lib/isIBAN';
 
 export function nifnieValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -60,5 +61,19 @@ export class TypeValidator implements Validator {
   }
 }
 
+export function ibanValidator(control: AbstractControl): { [key: string]: any } | null {
+  if (!control.value) { return null; }
+  return isIBAN(control.value.toString()) ? null : { iban: 'No es un IBAN valido' }
+}
+@Directive({
+  selector: '[iban][formControlName],[iban][formControl],[iban][ngModel]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: IbanValidator, multi: true }]
+})
+export class IbanValidator implements Validator {
+  validate(control: AbstractControl): ValidationErrors | null {
+    return ibanValidator(control);
+  }
+}
 
-export const MIS_VALIDADORES = [NIFNIEValidator, UppercaseValidator, TypeValidator,]
+
+export const MIS_VALIDADORES = [NIFNIEValidator, UppercaseValidator, TypeValidator, IbanValidator, ]
