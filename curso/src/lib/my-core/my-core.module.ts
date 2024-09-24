@@ -5,7 +5,7 @@ import { MySizerComponent } from './components/my-sizer.component';
 import { PIPES_NUMERICOS } from './pipes/numericos.pipe';
 import { MIS_VALIDADORES } from './directives/mis-validadores.directive';
 import { ShowDirective } from './directives/show.directive';
-import { DIRECTIVAS_ATRIBUTO } from './directives/atributo.directive';
+import { DIRECTIVAS_ATRIBUTO } from './directives/atributos.directive';
 
 
 
