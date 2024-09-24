@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/directive-selector */
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, Renderer2 } from '@angular/core';
 
 @Directive({  selector: `[winConfirm]` })
 export class WindowConfirmDirective {
@@ -17,4 +17,12 @@ export class WindowConfirmDirective {
   @HostListener('mouseup') hasReleased() { this.isPressed = false; }
 }
 
-export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ]
+@Directive({ selector: '[myShadow]' })
+export class ShadowDirective {
+  constructor(el: ElementRef, renderer: Renderer2) {
+    el.nativeElement.style.boxShadow = '10px 10px 5px #888888';
+    //renderer.setStyle(el.nativeElement, 'box-shadow', '10px 10px 5px #888888');
+  }
+}
+
+export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ShadowDirective, ]
