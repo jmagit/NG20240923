@@ -23,6 +23,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
+import { GeolocationComponent } from './geolocation/geolocation.component';
 // import { BlogModule } from './blog';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ContactosModule } from './contactos';
     CalculadoraComponent,
     GraficoSvgComponent,
     FormularioComponent,
+    GeolocationComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
