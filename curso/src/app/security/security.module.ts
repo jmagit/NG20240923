@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent, LoginFormComponent } from './login/login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { Routes, RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ const routes: Routes = [
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(routes),
   ],
-  declarations: [ LoginComponent, RegisterUserComponent ],
-  exports: [ LoginComponent, RegisterUserComponent ],
+  declarations: [ LoginComponent, LoginFormComponent, RegisterUserComponent ],
+  exports: [ LoginComponent, LoginFormComponent, RegisterUserComponent, RouterModule ],
 })
 export class SecurityModule { }

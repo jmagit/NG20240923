@@ -6,7 +6,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 // import { BlogListComponent, BlogAddComponent, BlogEditComponent, BlogViewComponent } from './blog';
 import { PageNotFoundComponent } from './main/page-not-found/page-not-found.component';
-import { AuthGuard } from './security';
+import { AuthGuard, LoginFormComponent, RegisterUserComponent } from './security';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -26,8 +26,12 @@ const routes: Routes = [
   //   { path: ':id', component: BlogViewComponent },
   //   { path: ':id/:kk', component: BlogViewComponent },
   // ], canActivateChild: [AuthGuard]},
-  { path: 'blog', loadChildren: () => import('./blog/modulo.module').then(mod => mod.BlogModule), canActivateChild: [AuthGuard]},
+  { path: 'blog', loadChildren: () => import('./blog').then(mod => mod.BlogModule), canActivate: [AuthGuard], data: { redirectTo: '/login'}, /*canDeactivate: [() => inject(AuthService). isAutenticated],*/ },
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule) },
+
+  { path: 'login', component: LoginFormComponent },
+  { path: 'registro', component: RegisterUserComponent },
+
   { path: '404.html', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
