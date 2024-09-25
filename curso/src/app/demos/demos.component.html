@@ -72,7 +72,7 @@
 </p>
 <p [class.semivisible]="!visible">Ahora me ves bien</p>
 <p>Fecha: {{fecha | date:'dd/MM/yyyy'}}</p>
-<p>Calcula: 2 + 2 = {{2 + 2}} = {{ calcula(2, 2) | currency:'EUR':'symbol':'1.2-2' }}</p>
+<p>Calcula: 2 + 2 = {{2 + 2}} = {{ calcula | exec:2:fontSize | currency:'EUR':'symbol':'1.2-2' }}</p>
 
 <ul>
   <li *ngFor="let item of listado | slice:-5; let ind=index; let fondo=odd;"

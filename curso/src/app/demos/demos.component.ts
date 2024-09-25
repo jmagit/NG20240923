@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Unsubscribable } from 'rxjs';
 import { NotificationService, NotificationType } from '../common-services';
 
@@ -6,6 +6,7 @@ import { NotificationService, NotificationType } from '../common-services';
   selector: 'app-demos',
   templateUrl: './demos.component.html',
   styleUrls: ['./demos.component.css'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   // providers: [ NotificationService, ]
 })
 export class DemosComponent implements OnInit, OnDestroy {
@@ -26,11 +27,14 @@ export class DemosComponent implements OnInit, OnDestroy {
   visible = true
   estetica = { importante: true, error: false, urgente: true}
 
-  constructor(public vm: NotificationService) { }
+  constructor(public vm: NotificationService, private changes: ChangeDetectorRef) {
+    this.calcula = this.calcula.bind(this)
+  }
   public get Nombre(): string { return this.nombre }
   public set Nombre(value: string) {
     if(this.nombre === value) return
     this.nombre = value
+    this.changes.markForCheck()
   }
 
   saluda() {
@@ -51,7 +55,11 @@ export class DemosComponent implements OnInit, OnDestroy {
     this.estetica.error = !this.estetica.error
   }
 
-  calcula(a: number, b: number) { return a + b }
+  cont = 0;
+  calcula(a: number, b: number) {
+    console.log(`Calcula ${++this.cont}`)
+    return a + b
+  }
 
   add(provincia: string) {
     const id = this.listado.length ? (this.listado[this.listado.length -1].id + 1) : 1
