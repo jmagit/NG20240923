@@ -21,7 +21,7 @@ export class AppComponent /*implements OnInit*/ {
   constructor(nav: NavigationService,
     private router: Router, private eventBus: EventBusService) {
       this.eventBus.on(LOGOUT_EVENT, () => {
-        this.router.navigateByUrl('/registro');
+        this.router.navigateByUrl('/');
       })
     }
 

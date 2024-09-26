@@ -43,7 +43,7 @@ export class BaseComponent {
   }
 
   reloadPage(): void {
-    this.router.navigateByUrl(this.router.url /*, {onSameUrlNavigation: 'reload'}*/)
+    // this.router.navigateByUrl(this.router.url /*, {onSameUrlNavigation: 'reload'}*/)
   }
 }
 
