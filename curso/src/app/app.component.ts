@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { LoggerService } from '@my/core';
-import { NavigationService, NotificationService, NotificationType } from './common-services';
+import { EventBusService, NavigationService, NotificationService, NotificationType } from './common-services';
+import { Router } from '@angular/router';
+import { LOGOUT_EVENT } from './security';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent /*implements OnInit*/ {
   // constructor(out: LoggerService) {
@@ -15,7 +18,12 @@ export class AppComponent /*implements OnInit*/ {
   //   out.log('Es un log')
   // }
 
-  constructor(nav: NavigationService) {}
+  constructor(nav: NavigationService,
+    private router: Router, private eventBus: EventBusService) {
+      this.eventBus.on(LOGOUT_EVENT, () => {
+        this.router.navigateByUrl('/registro');
+      })
+    }
 
   // constructor(private notify: NotificationService) {}
   // ngOnInit(): void {

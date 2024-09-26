@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { LoggerService } from 'src/lib/my-core';
 
@@ -15,7 +15,7 @@ export class Notification {
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService {
+export class NotificationService implements OnDestroy {
   public readonly NotificationType = NotificationType;
   private listado: Array<Notification> = [];
   private notificacion$ = new Subject<Notification>();
@@ -54,6 +54,10 @@ export class NotificationService {
     if (this.HayNotificaciones) {
       this.listado.splice(0);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.notificacion$.complete()
   }
 
 }

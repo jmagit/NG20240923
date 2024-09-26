@@ -34,7 +34,9 @@ export class DemosComponent implements OnInit, OnDestroy {
   public set Nombre(value: string) {
     if(this.nombre === value) return
     this.nombre = value
-    this.changes.markForCheck()
+    this.resultado = `El nuevo nombre: ${this.nombre}`
+    this.visible = this.nombre.length > 0
+    // this.changes.markForCheck()
   }
 
   saluda() {
