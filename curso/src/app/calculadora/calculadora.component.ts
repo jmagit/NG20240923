@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { LoggerService } from 'src/lib/my-core';
 import { NotificationService, NotificationType } from '../common-services';
 
@@ -7,7 +7,7 @@ import { NotificationService, NotificationType } from '../common-services';
   templateUrl: './calculadora.component.html',
   styleUrls: ['./calculadora.component.scss']
 })
-export class CalculadoraComponent implements OnInit {
+export class CalculadoraComponent implements OnInit, OnChanges {
   public readonly Math = Math;
 
   private acumulado = 0;
@@ -138,10 +138,10 @@ export class CalculadoraComponent implements OnInit {
       this.ponOperando(this.init);
     }
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    // if (this.init) {
-    //   this.ponOperando(this.init.toString());
-    // }
+  ngOnChanges(_changes: SimpleChanges): void {
+    if (this.init) {
+      // this.ponOperando(this.init.toString());
+    }
   }
 
 }

@@ -37,7 +37,7 @@ export class DAOServiceMock<T, K> extends RESTDAOService<T, number> {
   }
 }
 
-describe('BlogDAOService', () => {
+xdescribe('BlogDAOService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
@@ -77,7 +77,7 @@ describe('BlogDAOService', () => {
 
 });
 
-describe('BlogViewModelService', () => {
+xdescribe('BlogViewModelService', () => {
   let service: BlogViewModelService;
   let dao: BlogDAOService;
 

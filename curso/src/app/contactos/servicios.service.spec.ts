@@ -35,6 +35,9 @@ export class DAOServiceMock<T, K> extends RESTDAOService<T, number> {
     this.listado.splice(id - 1, 1)
     return of(item);
   }
+  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
+    return of({ page, pages: 2, rows: this.listado.length, list: this.listado});
+  }
 }
 
 describe('ContactosDAOService', () => {
@@ -52,8 +55,8 @@ describe('ContactosDAOService', () => {
       },
       data => { fail(); }
     );
-    // const req = httpMock.expectOne('http://localhost:4321/contactos');
-    const req = httpMock.expectOne('/api/contactos');
+    const req = httpMock.expectOne('http://localhost:4321/api/contactos');
+    // const req = httpMock.expectOne('/api/contactos');
     expect(req.request.method).toEqual('GET');
     req.flush([
       {"id":1,"tratamiento":"Sra.","nombre":"Marline","apellidos":"Lockton Jerrans","telefono":"846 054 444","email":"mjerrans0@de.vu","sexo":"M","nacimiento":"1973-07-09","avatar":"https://randomuser.me/api/portraits/women/1.jpg","conflictivo":true},
@@ -67,8 +70,8 @@ describe('ContactosDAOService', () => {
   it('change', inject([ContactosDAOService, HttpTestingController], (dao: ContactosDAOService, httpMock: HttpTestingController) => {
     let item = {id:1, nombre:"Pepito",apellido:"Grillo"};
     dao.change(1, item).subscribe(() => { });
-    // const req = httpMock.expectOne('http://localhost:4321/contactos');
-    const req = httpMock.expectOne('/api/contactos/1');
+    const req = httpMock.expectOne('http://localhost:4321/api/contactos/1');
+    // const req = httpMock.expectOne('/api/contactos/1');
     expect(req.request.method).toEqual('PUT');
     expect(req.request.body.id).toEqual(1);
     expect(req.request.body.nombre).toEqual('Pepito');

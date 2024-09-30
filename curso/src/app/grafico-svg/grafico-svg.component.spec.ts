@@ -7,7 +7,7 @@ describe('GraficoSvgComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ GraficoSvgComponent ]
+      declarations: [ GraficoSvgComponent ]
     })
     .compileComponents();
 
