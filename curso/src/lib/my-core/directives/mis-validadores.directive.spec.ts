@@ -15,7 +15,7 @@ describe('Mis validadores', () => {
       });
 
       it('Con un 0', () => {
-         expect(isNotBlankValidator(new FormControl(0))).toBeNull()
+        expect(isNotBlankValidator(new FormControl(0))).toBeNull()
       });
 
     });
@@ -48,21 +48,21 @@ describe('Mis validadores', () => {
           expect(result).not.toBeNull()
           expect(result?.['isNotBlank']).toBeDefined()
           expect(result?.['isNotBlank']).toBe('No puede estar vacío')
-          });
+        });
       });
     });
   });
 });
 
 
-describe('Otros ejemplos', () => {
+fdescribe('Otros ejemplos', () => {
   function divide(a: number, b: number) {
-    if(b === 0)
-      throw new Error('Divide by 0')
+    // if (b === 0)
+    //   throw new Error('Divide by 0')
     return a / b
   }
 
-  describe('isNotBlankValidator', () => {
+  describe('kk', () => {
     describe('OK', () => {
       it('Tengo que probar esto también');
 
@@ -72,15 +72,19 @@ describe('Otros ejemplos', () => {
       });
 
       it('Divide por 0', () => {
-        expect(1/0).toBePositiveInfinity()
-        //const result = divide(1, 0)
+        expect(1 / 0).toBePositiveInfinity()
+        try {
+          const result = divide(1, 0)
+          fail('No se lanza la excepcion')
+        } catch (error) {
+        }
         //expect(divide(1, 0)).toThrowError('Divide by 0')
-        // expect(() => divide(1, 0)).toThrow()
+        expect(() => divide(1, 0)).toThrow()
       });
     });
     describe('KO', () => {
       it('se ha quedado a medias', () => {
-        const valor = new FormControl('')
+        const valor = new FormControl('x')
 
         const result = isNotBlankValidator(valor)
 
@@ -101,7 +105,7 @@ describe('Otros ejemplos', () => {
           expect(result).not.toBeNull()
           expect(result?.['isNotBlank']).toBeDefined()
           expect(result?.['isNotBlank']).toBe('No puede estar vacío')
-          });
+        });
       });
     });
   });
@@ -151,7 +155,7 @@ describe('NIFNIEValidator', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [nifnieValidatorHostComponent, NIFNIEValidator],
-      imports: [FormsModule, ]
+      imports: [FormsModule,]
     })
       .compileComponents();
   });
@@ -214,7 +218,8 @@ describe('uppercaseValidator', () => {
   })
 });
 
-fdescribe('ibanValidator', () => {
+
+describe('ibanValidator', () => {
   const control = new FormControl('input');
   const validator = ibanValidator
   describe('OK', () => {
