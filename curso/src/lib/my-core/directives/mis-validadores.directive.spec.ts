@@ -55,10 +55,10 @@ describe('Mis validadores', () => {
 });
 
 
-fdescribe('Otros ejemplos', () => {
+describe('Otros ejemplos', () => {
   function divide(a: number, b: number) {
-    // if (b === 0)
-    //   throw new Error('Divide by 0')
+    if (b === 0)
+      throw new Error('Divide by 0')
     return a / b
   }
 
@@ -84,7 +84,7 @@ fdescribe('Otros ejemplos', () => {
     });
     describe('KO', () => {
       it('se ha quedado a medias', () => {
-        const valor = new FormControl('x')
+        const valor = new FormControl('')
 
         const result = isNotBlankValidator(valor)
 
