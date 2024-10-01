@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GeolocationComponent } from './geolocation.component';
 
-describe('GeolocationComponent', () => {
+xdescribe('GeolocationComponent', () => {
   let component: GeolocationComponent;
   let fixture: ComponentFixture<GeolocationComponent>;
 

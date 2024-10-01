@@ -77,5 +77,8 @@ export class IbanValidator implements Validator {
   }
 }
 
+export function isNotBlankValidator(control: AbstractControl): { [key: string]: any } | null {
+  return control.value != null && control.value != undefined && control.value.toString().trim() !== '' ? null : { isNotBlank: 'No puede estar vacío' }
+}
 
 export const MIS_VALIDADORES = [NIFNIEValidator, UppercaseValidator, TypeValidator, IbanValidator, ]
