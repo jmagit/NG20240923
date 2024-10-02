@@ -54,6 +54,14 @@ describe('Mis validadores', () => {
   });
 });
 
+class Calculadora {
+  suma(a: number, b: number) { return a + b }
+  divide(a: number, b: number) {
+    if (b === 0)
+      throw new Error('Divide by 0')
+    return a / b
+  }
+}
 
 describe('Otros ejemplos', () => {
   function divide(a: number, b: number) {
@@ -62,6 +70,34 @@ describe('Otros ejemplos', () => {
     return a / b
   }
 
+  describe('mock', () => {
+    let calc: Calculadora;
+
+    function depediente(a: number, b: number) { return calc.suma(a,b) * 2 }
+
+    beforeEach(() => {
+      calc = new Calculadora()
+    })
+    it('real', () => {
+      expect(calc.suma(2,2)).toBe(4)
+    })
+    it('dependencia con mock', () => {
+      let dep = spyOn(calc, 'suma').and.returnValue(3)
+      expect(depediente(2,2)).toBe(6)
+      expect(dep).toHaveBeenCalledWith(2,2)
+    })
+    it('dependencia real', () => {
+      expect(depediente(1,2)).toBe(6)
+    })
+    it('siempre pasa', () => {
+      let cantidad = 0
+      let total = 100
+      let media = total / cantidad
+      // expect(0.1 + 0.2).toBe(0.3)
+      // expect(1 - 0.9).toBe(0.1)
+      expect((0.1 + 0.2) + (1 - 0.9)).toBe(0.4)
+    })
+  });
   describe('kk', () => {
     describe('OK', () => {
       it('Tengo que probar esto también');

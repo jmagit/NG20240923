@@ -16,6 +16,7 @@ describe('NotificationService', () => {
     service = TestBed.inject(NotificationService);
     log = TestBed.inject(LoggerService);
     spyOn(log, 'error');
+    // service = new NotificationService(new LoggerService(4))
   });
 
   it('should be created', () => {
