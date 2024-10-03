@@ -9,6 +9,7 @@ import { NavigationService, NotificationService } from '../common-services';
 
 import { Contactos, ContactosDAOService, ContactosViewModelService } from './servicios.service';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class DAOServiceMock<T, K> extends RESTDAOService<T, number> {
   constructor(http: HttpClient, public listado: Array<T>) {
     super(http, '')
@@ -35,7 +36,7 @@ export class DAOServiceMock<T, K> extends RESTDAOService<T, number> {
     this.listado.splice(id - 1, 1)
     return of(item);
   }
-  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
+  page(page: number, _rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return of({ page, pages: 2, rows: this.listado.length, list: this.listado});
   }
 }
@@ -53,7 +54,7 @@ describe('ContactosDAOService', () => {
       data => {
         expect(data.length).toEqual(4);
       },
-      data => { fail(); }
+      _data => { fail(); }
     );
     const req = httpMock.expectOne('http://localhost:4321/api/contactos');
     // const req = httpMock.expectOne('/api/contactos');

@@ -12,7 +12,7 @@ describe('Pruebas aisladas de la calculadora', () => {
   let notify: NotificationService;
 
 	beforeAll(() => {
-    log = new LoggerService()
+    log = new LoggerService(0)
     notify = new NotificationService(log)
 		calc = new CalculadoraComponent(log, notify)
 	});
@@ -242,7 +242,7 @@ describe('CalculadoraComponent', () => {
   });
 
   it('calculos', () => {
-    let de = fixture.debugElement;
+    // let de = fixture.debugElement;
     // let tag = de.nativeElement;
     let tag: HTMLElement = fixture.debugElement.query(By.css('.Pantalla')).nativeElement;
     expect(tag.textContent?.trim()).toBe('0')

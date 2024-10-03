@@ -92,6 +92,7 @@ describe('Otros ejemplos', () => {
     it('siempre pasa', () => {
       let cantidad = 0
       let total = 100
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       let media = total / cantidad
       // expect(0.1 + 0.2).toBe(0.3)
       // expect(1 - 0.9).toBe(0.1)
@@ -110,6 +111,7 @@ describe('Otros ejemplos', () => {
       it('Divide por 0', () => {
         expect(1 / 0).toBePositiveInfinity()
         try {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const result = divide(1, 0)
           fail('No se lanza la excepcion')
         } catch (error) {

@@ -162,7 +162,7 @@ export class AuthInterceptor implements HttpInterceptor {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(false);
       return this.login.refresh().pipe(
-        switchMap(data => {
+        switchMap(_data => {
           this.isRefreshing = false;
           this.refreshTokenSubject.next(true);
           return next.handle(this.addAuthorizationHeader(req))
@@ -191,7 +191,7 @@ export class AuthInterceptor implements HttpInterceptor {
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private authService: AuthService, private router: Router) {}
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivateChild(_childRoute: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.authService.isAuthenticated;
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -204,13 +204,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 @Injectable({ providedIn: 'root' })
 export class InRoleGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) { }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
     return route.data['roles'] ? this.authService.isInRoles(...route.data['roles']) : false;
   }
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivateChild(childRoute: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return childRoute.data['roles'] ? this.authService.isInRoles(...childRoute.data['roles']) : false;
   }
-  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canLoad(route: Route, _segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return route.data && route.data['roles'] ? this.authService.isInRoles(...route.data['roles']) : false;
   }
 }

@@ -20,6 +20,7 @@ export class WindowConfirmDirective {
 
 @Directive({ selector: '[myShadow]' })
 export class ShadowDirective {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(el: ElementRef, renderer: Renderer2) {
     el.nativeElement.style.boxShadow = '10px 10px 5px #888888';
     //renderer.setStyle(el.nativeElement, 'box-shadow', '10px 10px 5px #888888');
