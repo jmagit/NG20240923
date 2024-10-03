@@ -24,6 +24,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
 import { GeolocationComponent } from './geolocation/geolocation.component';
+import { PruebaComponent } from './prueba/prueba.component';
 // import { BlogModule } from './blog';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { GeolocationComponent } from './geolocation/geolocation.component';
     GraficoSvgComponent,
     FormularioComponent,
     GeolocationComponent,
+    PruebaComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
