@@ -14,14 +14,7 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "3e3b0425-6e87-4dd8-ac01-e09fe5b20c61",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "1214x656",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "4fa0f36d-f01f-41f7-87e4-acc6958b7376",
+      "id": "3dfd05bb-be66-4f43-8b98-0d81c4b1b60c",
       "comment": "",
       "command": "verifyText",
       "target": "css=.highlight-card > span",
@@ -325,13 +318,9 @@
     }, {
       "id": "395908f4-b70e-47e1-a5b3-b4de5dbc34d2",
       "comment": "",
-      "command": "verifyText",
+      "command": "assertText",
       "target": "css=.Pantalla",
-      "targets": [
-        ["css=.Pantalla", "css:finder"],
-        ["xpath=//output[2]", "xpath:position"],
-        ["xpath=//output[contains(.,'987654321')]", "xpath:innerText"]
-      ],
+      "targets": [],
       "value": "987654321"
     }, {
       "id": "1b1c7db9-799a-48e3-a110-a37e43a16cc5",
@@ -484,30 +473,8 @@
       "id": "fd354001-b4c0-47b3-92d8-a4edcf3cd4e4",
       "comment": "",
       "command": "open",
-      "target": "/",
+      "target": "/chisme/de/hacer/numeros",
       "targets": [],
-      "value": ""
-    }, {
-      "id": "ba41267a-e390-475a-809c-b255edb52270",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "1214x656",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "2fb0b00c-f5ef-466b-ba0f-835fb638d208",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=calculadora",
-      "targets": [
-        ["linkText=calculadora", "linkText"],
-        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
-        ["xpath=//a[contains(text(),'calculadora')]", "xpath:link"],
-        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/ul/li[3]/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, '/chisme/de/hacer/numeros')]", "xpath:href"],
-        ["xpath=//li[3]/a", "xpath:position"],
-        ["xpath=//a[contains(.,' calculadora')]", "xpath:innerText"]
-      ],
       "value": ""
     }, {
       "id": "c68ca7c1-6da5-4965-a766-53982bd55fad",
@@ -703,6 +670,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": []
+  }, {
+    "id": "4d8cb9c6-242f-4752-a80e-44127e82c1c0",
+    "name": "calculadora",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["486a8155-1dda-41aa-828a-0e60234018fc", "ca72e976-79a7-46ac-9cb2-bbc8f018ed67"]
   }],
   "urls": ["http://localhost:4200/"],
   "plugins": []
