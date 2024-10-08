@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of, throwError } from 'rxjs';
@@ -40,9 +40,9 @@ export class DAOServiceMock<T, K> extends RESTDAOService<T, number> {
 xdescribe('BlogDAOService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      providers: [ BlogDAOService ],
-    });
+    imports: [],
+    providers: [BlogDAOService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
   });
 
   it('query', inject([BlogDAOService, HttpTestingController], (dao: BlogDAOService, httpMock: HttpTestingController) => {
@@ -83,18 +83,17 @@ xdescribe('BlogViewModelService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [NotificationService, LoggerService,
+    imports: [RouterTestingModule],
+    providers: [NotificationService, LoggerService,
         {
-          provide: BlogDAOService, useFactory: (http: HttpClient) => new DAOServiceMock<Blog, number>(http, [
-            {"id":1,"tratamiento":"Sra.","nombre":"Marline","apellidos":"Lockton Jerrans","telefono":"846 054 444","email":"mjerrans0@de.vu","sexo":"M","nacimiento":"1973-07-09","avatar":"https://randomuser.me/api/portraits/women/1.jpg","conflictivo":true},
-            {"id":2,"tratamiento":"Sr.","nombre":"Beale","apellidos":"Knibb Koppe","telefono":"093 804 977","email":"bkoppe0@apache.org","sexo":"H","nacimiento":"1995-11-22","avatar":"https://randomuser.me/api/portraits/men/1.jpg","conflictivo":false},
-            {"id":3,"tratamiento":"Srta.","nombre":"Gwenora","apellidos":"Forrestor Fitzackerley","telefono":"853 134 343","email":"gfitzackerley1@opensource.org","sexo":"M","nacimiento":"1968-06-12","avatar":"https://randomuser.me/api/portraits/women/2.jpg","conflictivo":false},
-            {"id":4,"tratamiento":"Sr.","nombre":"Umberto","apellidos":"Langforth Spenclay","telefono":"855 032 596","email":"uspenclay1@mlb.com","sexo":"H","nacimiento":"2000-05-15","avatar":"https://randomuser.me/api/portraits/men/2.jpg","conflictivo":false}
-          ]), deps: [HttpClient]
-        }
-      ],
-    });
+            provide: BlogDAOService, useFactory: (http: HttpClient) => new DAOServiceMock<Blog, number>(http, [
+                { "id": 1, "tratamiento": "Sra.", "nombre": "Marline", "apellidos": "Lockton Jerrans", "telefono": "846 054 444", "email": "mjerrans0@de.vu", "sexo": "M", "nacimiento": "1973-07-09", "avatar": "https://randomuser.me/api/portraits/women/1.jpg", "conflictivo": true },
+                { "id": 2, "tratamiento": "Sr.", "nombre": "Beale", "apellidos": "Knibb Koppe", "telefono": "093 804 977", "email": "bkoppe0@apache.org", "sexo": "H", "nacimiento": "1995-11-22", "avatar": "https://randomuser.me/api/portraits/men/1.jpg", "conflictivo": false },
+                { "id": 3, "tratamiento": "Srta.", "nombre": "Gwenora", "apellidos": "Forrestor Fitzackerley", "telefono": "853 134 343", "email": "gfitzackerley1@opensource.org", "sexo": "M", "nacimiento": "1968-06-12", "avatar": "https://randomuser.me/api/portraits/women/2.jpg", "conflictivo": false },
+                { "id": 4, "tratamiento": "Sr.", "nombre": "Umberto", "apellidos": "Langforth Spenclay", "telefono": "855 032 596", "email": "uspenclay1@mlb.com", "sexo": "H", "nacimiento": "2000-05-15", "avatar": "https://randomuser.me/api/portraits/men/2.jpg", "conflictivo": false }
+            ]), deps: [HttpClient]
+        }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     service = TestBed.inject(BlogViewModelService);
     dao = TestBed.inject(BlogDAOService);
   });

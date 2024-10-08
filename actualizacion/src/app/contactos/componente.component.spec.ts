@@ -1,4 +1,4 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { LoggerService } from 'src/lib/my-core';
 import { NotificationService } from '../common-services';
 
 import { ContactosComponent } from './componente.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ContactosComponent', () => {
   let component: ContactosComponent;
@@ -14,11 +15,11 @@ describe('ContactosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactosComponent ],
-      providers: [ NotificationService, LoggerService ],
-      imports: [ HttpClientTestingModule, RouterTestingModule, FormsModule ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
+    declarations: [ContactosComponent],
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [RouterTestingModule, FormsModule],
+    providers: [NotificationService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
   });
 

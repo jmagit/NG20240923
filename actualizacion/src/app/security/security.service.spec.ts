@@ -1,5 +1,5 @@
-import { HttpClient, HttpContext, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient, HttpContext, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { inject, TestBed } from '@angular/core/testing';
 import { Router, } from '@angular/router';
@@ -51,9 +51,9 @@ describe('LoginService ', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [AuthService, HttpClient],
-    });
+    imports: [],
+    providers: [AuthService, HttpClient, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     service = TestBed.inject(LoginService);
     auth = TestBed.inject(AuthService);
   });
@@ -220,12 +220,14 @@ describe('AuthInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
+    imports: [],
+    providers: [
         AuthInterceptor, AuthService,
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, }
-      ],
-      imports: [HttpClientTestingModule,],
-    });
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     service = TestBed.inject(AuthInterceptor);
     auth = TestBed.inject(AuthService);
     http = TestBed.inject(HttpClient)

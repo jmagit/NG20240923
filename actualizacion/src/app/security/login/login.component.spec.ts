@@ -4,10 +4,11 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NotificationService } from 'src/app/common-services';
 import { LoginService } from '../security.service';
 import { AuthService } from '..';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoggerService } from 'src/lib/my-core';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,11 +16,11 @@ describe('LoginComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      providers: [ LoginService, AuthService, NotificationService, LoggerService, ],
-      imports: [ HttpClientTestingModule, RouterTestingModule, FormsModule ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
+    declarations: [LoginComponent],
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [RouterTestingModule, FormsModule],
+    providers: [LoginService, AuthService, NotificationService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting(),]
+})
     .compileComponents();
   });
 

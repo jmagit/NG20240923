@@ -20,37 +20,31 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import GraficoSvgComponent from './grafico-svg/grafico-svg.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
 import { GeolocationComponent } from './geolocation/geolocation.component';
 import { PruebaComponent } from './prueba/prueba.component';
 // import { BlogModule } from './blog';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    DemosComponent,
-    DinamicoComponent,
-    CalculadoraComponent,
-    GraficoSvgComponent,
-    FormularioComponent,
-    GeolocationComponent,
-    PruebaComponent,
-  ],
-  imports: [
-    BrowserModule, FormsModule, HttpClientModule,
-    AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
-    MyCoreModule, CommonServicesModule, ContactosModule,
-    // BlogModule,
-  ],
-  providers: [
-    LoggerService,
-    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
-    { provide: LOCALE_ID, useValue: 'es-ES'},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
-    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        DemosComponent,
+        DinamicoComponent,
+        CalculadoraComponent,
+        GraficoSvgComponent,
+        FormularioComponent,
+        GeolocationComponent,
+        PruebaComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule, FormsModule,
+        AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
+        MyCoreModule, CommonServicesModule, ContactosModule], providers: [
+        LoggerService,
+        { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
+        { provide: LOCALE_ID, useValue: 'es-ES' },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+        { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
