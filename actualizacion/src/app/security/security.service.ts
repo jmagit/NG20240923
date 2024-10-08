@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, UrlTree, CanLoad, Route, UrlSegment } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Route, UrlSegment } from '@angular/router';
 import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpContextToken } from '@angular/common/http';
 import { BehaviorSubject, catchError, filter, Observable, of, switchMap, take, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -189,7 +189,7 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 
 @Injectable({providedIn: 'root'})
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard  {
   constructor(private authService: AuthService, private router: Router) {}
   canActivateChild(_childRoute: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.authService.isAuthenticated;
@@ -202,7 +202,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 }
 
 @Injectable({ providedIn: 'root' })
-export class InRoleGuard implements CanActivate, CanActivateChild, CanLoad {
+export class InRoleGuard  {
   constructor(private authService: AuthService, private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
     return route.data['roles'] ? this.authService.isInRoles(...route.data['roles']) : false;
