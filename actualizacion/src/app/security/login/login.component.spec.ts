@@ -16,9 +16,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-    declarations: [LoginComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [RouterTestingModule, FormsModule],
+    imports: [RouterTestingModule, FormsModule, LoginComponent],
     providers: [LoginService, AuthService, NotificationService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting(),]
 })
     .compileComponents();

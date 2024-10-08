@@ -1,13 +1,53 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Unsubscribable } from 'rxjs';
 import { NotificationService, NotificationType } from '../common-services';
+import { GeolocationComponent } from '../geolocation/geolocation.component';
+import { CalculadoraComponent } from '../calculadora/calculadora.component';
+import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf, NgClass, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe, TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
+import { TypeValidator } from '../../lib/my-core/directives/mis-validadores.directive';
+import { CardComponent } from '../common-components/card.component';
+import { WindowConfirmDirective, ShadowDirective } from '../../lib/my-core/directives/atributos.directive';
+import { ShowDirective } from '../../lib/my-core/directives/show.directive';
+import { UnlessDirective, SelectDirective } from '../../lib/my-core/directives/estructurales.directive';
+import { MySizerComponent } from '../../lib/my-core/components/my-sizer.component';
+import { ElipsisPipe, CapitalizePipe } from '../../lib/my-core/pipes/cadenas.pipe';
+import { ExecPipe } from '../../lib/my-core/pipes/numericos.pipe';
+import { FilterPipe, OrderByPipe } from '../../lib/my-core/pipes/colecciones.pipe';
 
 @Component({
-  selector: 'app-demos',
-  templateUrl: './demos.component.html',
-  styleUrls: ['./demos.component.css'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  // providers: [ NotificationService, ]
+    selector: 'app-demos',
+    templateUrl: './demos.component.html',
+    styleUrls: ['./demos.component.css'],
+    standalone: true,
+    imports: [
+        GeolocationComponent,
+        CalculadoraComponent,
+        FormsModule,
+        NgFor,
+        TypeValidator,
+        CardComponent,
+        WindowConfirmDirective,
+        ShadowDirective,
+        ShowDirective,
+        NgIf,
+        UnlessDirective,
+        NgClass,
+        SelectDirective,
+        MySizerComponent,
+        UpperCasePipe,
+        JsonPipe,
+        SlicePipe,
+        DecimalPipe,
+        TitleCasePipe,
+        CurrencyPipe,
+        DatePipe,
+        ElipsisPipe,
+        CapitalizePipe,
+        ExecPipe,
+        FilterPipe,
+        OrderByPipe,
+    ],
 })
 export class DemosComponent implements OnInit, OnDestroy {
   private suscriptor: Unsubscribable | undefined;

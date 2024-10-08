@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-card',
-  template: `
+    selector: 'app-card',
+    template: `
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ header }}</h5>
@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
       </div>
     </div>
   `,
+    standalone: true,
 })
 export class CardComponent {
     @Input() header?: string;

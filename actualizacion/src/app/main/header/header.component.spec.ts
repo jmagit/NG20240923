@@ -9,9 +9,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent, ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
+    imports: [HeaderComponent],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

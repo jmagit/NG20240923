@@ -12,12 +12,12 @@ import { SelectDirective, UnlessDirective } from './directives/estructurales.dir
 
 
 @NgModule({
-  declarations: [ PIPES_CADENAS, MySizerComponent, PIPES_NUMERICOS, MIS_VALIDADORES,
-    ShowDirective, DIRECTIVAS_ATRIBUTO, FilterPipe, OrderByPipe, UnlessDirective, SelectDirective, ],
-  exports: [ PIPES_CADENAS, MySizerComponent, PIPES_NUMERICOS, MIS_VALIDADORES,
-    ShowDirective, DIRECTIVAS_ATRIBUTO, FilterPipe, OrderByPipe, UnlessDirective, SelectDirective, ],
-  imports: [
-    CommonModule
-  ]
+    exports: [PIPES_CADENAS, MySizerComponent, PIPES_NUMERICOS, MIS_VALIDADORES,
+        ShowDirective, DIRECTIVAS_ATRIBUTO, FilterPipe, OrderByPipe, UnlessDirective, SelectDirective,],
+    imports: [
+        CommonModule,
+        PIPES_CADENAS, MySizerComponent, PIPES_NUMERICOS, MIS_VALIDADORES,
+        ShowDirective, DIRECTIVAS_ATRIBUTO, FilterPipe, OrderByPipe, UnlessDirective, SelectDirective
+    ]
 })
 export class MyCoreModule { }

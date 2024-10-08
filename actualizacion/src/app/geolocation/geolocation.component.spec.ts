@@ -8,8 +8,8 @@ xdescribe('GeolocationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GeolocationComponent ]
-    })
+    imports: [GeolocationComponent]
+})
     .compileComponents();
   });
 

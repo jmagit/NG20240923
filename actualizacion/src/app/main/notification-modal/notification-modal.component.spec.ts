@@ -11,10 +11,10 @@ describe('NotificationModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationModalComponent ],
-      providers: [ NotificationService, LoggerService ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
+    imports: [NotificationModalComponent],
+    providers: [NotificationService, LoggerService],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

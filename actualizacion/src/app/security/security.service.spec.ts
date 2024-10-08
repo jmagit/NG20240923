@@ -356,9 +356,15 @@ describe('AuthInterceptor', () => {
   });
 });
 
-@Component({ selector: 'app-test-home', template: `<p>Test Home</p>` })
+@Component({
+    selector: 'app-test-home', template: `<p>Test Home</p>`,
+    standalone: true
+})
 class TestHomeComponent { }
-@Component({ selector: 'app-test-component', template: `<p>Test Component</p>` })
+@Component({
+    selector: 'app-test-component', template: `<p>Test Component</p>`,
+    standalone: true
+})
 class TestComponent { }
 
 describe('AuthGuard', () => {
@@ -369,19 +375,17 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestHomeComponent, TestComponent],
-      providers: [AuthService],
-      imports: [
-        RouterTestingModule.withRoutes(
-          [
+    providers: [AuthService],
+    imports: [
+        RouterTestingModule.withRoutes([
             { path: '', pathMatch: 'full', component: TestHomeComponent },
             { path: 'login', component: TestComponent },
             { path: 'test', component: TestComponent, canActivate: [AuthGuard] },
             { path: 'redirect', component: TestComponent, canActivate: [AuthGuard], data: { redirectTo: '/login' } },
-          ]
-        )
-      ]
-    });
+        ]),
+        TestHomeComponent, TestComponent
+    ]
+});
     service = TestBed.inject(AuthGuard);
     router = TestBed.inject(Router);
     auth = TestBed.inject(AuthService);
@@ -422,18 +426,16 @@ describe('InRoleGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestHomeComponent, TestComponent],
-      providers: [AuthService],
-      imports: [
-        RouterTestingModule.withRoutes(
-          [
+    providers: [AuthService],
+    imports: [
+        RouterTestingModule.withRoutes([
             { path: '', pathMatch: 'full', component: TestHomeComponent },
             { path: 'test', component: TestComponent, canActivate: [InRoleGuard], data: { roles: ['Administradores', 'ADMIN'] } },
             { path: 'bad', component: TestComponent, canActivate: [InRoleGuard] },
-          ]
-        )
-      ]
-    });
+        ]),
+        TestHomeComponent, TestComponent
+    ]
+});
     service = TestBed.inject(InRoleGuard);
     router = TestBed.inject(Router);
     auth = TestBed.inject(AuthService);

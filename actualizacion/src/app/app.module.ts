@@ -27,19 +27,16 @@ import { GeolocationComponent } from './geolocation/geolocation.component';
 import { PruebaComponent } from './prueba/prueba.component';
 // import { BlogModule } from './blog';
 
-@NgModule({ declarations: [
-        AppComponent,
-        DemosComponent,
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule, FormsModule,
+        AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
+        MyCoreModule, CommonServicesModule, ContactosModule, DemosComponent,
         DinamicoComponent,
         CalculadoraComponent,
         GraficoSvgComponent,
         FormularioComponent,
         GeolocationComponent,
-        PruebaComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule, FormsModule,
-        AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
-        MyCoreModule, CommonServicesModule, ContactosModule], providers: [
+        PruebaComponent], providers: [
         LoggerService,
         { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
         { provide: LOCALE_ID, useValue: 'es-ES' },

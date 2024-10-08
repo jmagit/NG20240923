@@ -6,20 +6,18 @@ import { ListButtonsComponent } from './list-buttons.component';
 import { CardComponent } from './card.component';
 
 @NgModule({
-  declarations: [
-    FormButtonsComponent,
-    ShowErrorsMessagesComponent,
-    ListButtonsComponent,
-    CardComponent,
-  ],
-  exports: [
-    FormButtonsComponent,
-    ShowErrorsMessagesComponent,
-    ListButtonsComponent,
-    CardComponent,
-  ],
-  imports: [
-    CommonModule
-  ]
+    exports: [
+        FormButtonsComponent,
+        ShowErrorsMessagesComponent,
+        ListButtonsComponent,
+        CardComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormButtonsComponent,
+        ShowErrorsMessagesComponent,
+        ListButtonsComponent,
+        CardComponent
+    ]
 })
 export class CommonComponentsModule { }

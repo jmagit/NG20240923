@@ -15,9 +15,8 @@ describe('ContactosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [ContactosComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [RouterTestingModule, FormsModule],
+    imports: [RouterTestingModule, FormsModule, ContactosComponent],
     providers: [NotificationService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 })
     .compileComponents();

@@ -3,8 +3,9 @@ import { Pipe, PipeTransform, Predicate } from '@angular/core';
 import { compare, isArray } from '../utils/utils';
 
 @Pipe({
-  name: 'filter',
-  pure: false
+    name: 'filter',
+    pure: false,
+    standalone: true
 })
 export class FilterPipe implements PipeTransform {
   transform(value: any, where: Predicate<any> = (_item: any) => true): any {
@@ -13,8 +14,9 @@ export class FilterPipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'orderBy',
-  pure: false
+    name: 'orderBy',
+    pure: false,
+    standalone: true
 })
 export class OrderByPipe implements PipeTransform {
   transform(value: any, config: any = '+'): any {

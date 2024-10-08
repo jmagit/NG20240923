@@ -9,9 +9,9 @@ describe('DinamicoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DinamicoComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
+    imports: [DinamicoComponent],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

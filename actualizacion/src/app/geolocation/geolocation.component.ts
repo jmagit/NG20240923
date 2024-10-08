@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-geolocation',
-  templateUrl: './geolocation.component.html',
-  styleUrls: ['./geolocation.component.css']
+    selector: 'app-geolocation',
+    templateUrl: './geolocation.component.html',
+    styleUrls: ['./geolocation.component.css'],
+    standalone: true
 })
 export class GeolocationComponent implements OnInit, OnDestroy {
   latitud?: number

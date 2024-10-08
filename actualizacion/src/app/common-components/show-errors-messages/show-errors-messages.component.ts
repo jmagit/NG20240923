@@ -2,9 +2,10 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ErrorMessagePipe } from '@my/core';
 
 @Component({
-  selector: 'app-show-errors-messages',
-  templateUrl: './show-errors-messages.component.html',
-  styleUrls: ['./show-errors-messages.component.css']
+    selector: 'app-show-errors-messages',
+    templateUrl: './show-errors-messages.component.html',
+    styleUrls: ['./show-errors-messages.component.css'],
+    standalone: true
 })
 export class ShowErrorsMessagesComponent implements OnChanges  {
   @Input() errors: any;

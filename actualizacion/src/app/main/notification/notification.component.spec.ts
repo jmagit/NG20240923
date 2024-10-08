@@ -9,9 +9,9 @@ describe('NotificationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationComponent ],
-      providers: [ LoggerService, ]
-    })
+    imports: [NotificationComponent],
+    providers: [LoggerService,]
+})
     .compileComponents();
   }));
 

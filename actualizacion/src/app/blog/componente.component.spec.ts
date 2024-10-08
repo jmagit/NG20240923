@@ -15,9 +15,8 @@ describe('BlogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [BlogComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [RouterTestingModule, FormsModule],
+    imports: [RouterTestingModule, FormsModule, BlogComponent],
     providers: [NotificationService, LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 })
     .compileComponents();

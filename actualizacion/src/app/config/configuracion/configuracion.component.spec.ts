@@ -9,9 +9,8 @@ describe('ConfiguracionComponent', () => {
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfiguracionComponent ],
-      imports: [ RouterTestingModule ],
-    })
+    imports: [RouterTestingModule, ConfiguracionComponent],
+})
     .compileComponents();
   });
 

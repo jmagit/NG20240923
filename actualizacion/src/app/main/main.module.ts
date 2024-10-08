@@ -13,15 +13,13 @@ import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-  declarations: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent
-  ],
-  exports: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent
-  ],
-  imports: [
-    CommonModule, CommonServicesModule, RouterModule.forChild([]), SecurityModule,
-  ]
+    exports: [
+        NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent
+    ],
+    imports: [
+        CommonModule, CommonServicesModule, RouterModule.forChild([]), SecurityModule,
+        NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent,
+    ]
 })
 export class MainModule {
   constructor( @Optional() @SkipSelf() parentModule: MainModule) {

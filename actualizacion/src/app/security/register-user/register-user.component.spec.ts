@@ -14,9 +14,8 @@ describe('RegisterUserComponent', () => {
   beforeEach(async() => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     TestBed.configureTestingModule({
-    declarations: [RegisterUserComponent],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [],
+    imports: [RegisterUserComponent],
     providers: [LoggerService,
         { provide: Router, useValue: routerSpy }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 })

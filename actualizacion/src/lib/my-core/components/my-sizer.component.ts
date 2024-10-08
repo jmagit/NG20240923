@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'my-sizer',
-  template: `
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'my-sizer',
+    template: `
     <div>
       <button (click)="dec()">-</button><button (click)="inc()">+</button>
       <label [style.font-size.px]="size">FontSize: {{size}}px</label>
-    </div>`
+    </div>`,
+    standalone: true
 })
 export class MySizerComponent {
   @Input()  size: number | string = 12;

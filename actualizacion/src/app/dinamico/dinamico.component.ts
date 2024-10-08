@@ -5,12 +5,18 @@ import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import GraficoSvgComponent from '../grafico-svg/grafico-svg.component';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { ContactosComponent } from '../contactos';
+import { NgFor, NgComponentOutlet } from '@angular/common';
+import { LoginComponent } from '../security/login/login.component';
+import { NotificationModalComponent } from '../main/notification-modal/notification-modal.component';
+import { AjaxWaitComponent } from '../main/ajax-wait';
 // import { BlogComponent } from '../blog';
 
 @Component({
-  selector: 'app-dinamico',
-  templateUrl: './dinamico.component.html',
-  styleUrls: ['./dinamico.component.css']
+    selector: 'app-dinamico',
+    templateUrl: './dinamico.component.html',
+    styleUrls: ['./dinamico.component.css'],
+    standalone: true,
+    imports: [NgFor, LoginComponent, NotificationModalComponent, AjaxWaitComponent, NgComponentOutlet]
 })
 export class DinamicoComponent {
   menu = [

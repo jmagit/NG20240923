@@ -4,7 +4,8 @@ import { By } from '@angular/platform-browser';
 import { ShowErrorsDirective, WindowConfirmDirective } from './atributos.directive';
 
 @Component({
-  template: `<button type="button" (winConfirm)="MyOutput($event)" [winConfirmMessage]="MyInput"  ></button>`
+    template: `<button type="button" (winConfirm)="MyOutput($event)" [winConfirmMessage]="MyInput"  ></button>`,
+    standalone: true
 })
 class WindowConfirmDirectiveHostComponent {
   MyInput: any = null;
@@ -17,8 +18,8 @@ describe('WindowConfirmDirective', () =>  {
   let tag: DebugElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WindowConfirmDirectiveHostComponent, WindowConfirmDirective ],
-    })
+    imports: [WindowConfirmDirectiveHostComponent, WindowConfirmDirective],
+})
     .compileComponents();
   });
 
@@ -73,7 +74,8 @@ describe('WindowConfirmDirective', () =>  {
 })
 
 @Component({
-  template: `<output class="invalid-feedback" [myShowErrors]="errors"></output>`
+    template: `<output class="invalid-feedback" [myShowErrors]="errors"></output>`,
+    standalone: true
 })
 class ShowErrorsDirectiveHostComponent {
   errors: any = null;
@@ -85,8 +87,8 @@ describe('myShowErrors', () =>  {
   let tag: DebugElement;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowErrorsDirectiveHostComponent, ShowErrorsDirective ],
-    })
+    imports: [ShowErrorsDirectiveHostComponent, ShowErrorsDirective],
+})
     .compileComponents();
   });
 

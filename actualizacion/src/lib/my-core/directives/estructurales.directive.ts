@@ -4,7 +4,8 @@ import { Directive, DoCheck, Input, OnChanges, SimpleChanges, TemplateRef, ViewC
 import { OrderByPipe } from '../pipes/colecciones.pipe';
 
 @Directive({
-  selector: '[myUnless]'
+    selector: '[myUnless]',
+    standalone: true
 })
 export class UnlessDirective {
   private hasView = false;
@@ -24,7 +25,8 @@ export class UnlessDirective {
   }
 }
 @Directive({
-  selector: '[select]',
+    selector: '[select]',
+    standalone: true,
 })
 export class SelectDirective implements OnChanges, DoCheck {
   @Input() selectFrom!: any[];

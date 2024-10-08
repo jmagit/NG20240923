@@ -222,10 +222,10 @@ describe('CalculadoraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculadoraComponent ],
-      providers: [ NotificationService, LoggerService ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
+    imports: [CalculadoraComponent],
+    providers: [NotificationService, LoggerService],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

@@ -2,7 +2,10 @@
 import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
 import { ErrorMessagePipe } from '../pipes/cadenas.pipe';
 
-@Directive({  selector: `[winConfirm]` })
+@Directive({
+    selector: `[winConfirm]`,
+    standalone: true
+})
 export class WindowConfirmDirective {
   @Output() winConfirm: EventEmitter<any> = new EventEmitter();
   @Input() winConfirmMessage = '¿Seguro?';
@@ -18,7 +21,10 @@ export class WindowConfirmDirective {
   @HostListener('mouseup') hasReleased() { this.isPressed = false; }
 }
 
-@Directive({ selector: '[myShadow]' })
+@Directive({
+    selector: '[myShadow]',
+    standalone: true
+})
 export class ShadowDirective {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(el: ElementRef, renderer: Renderer2) {
@@ -28,7 +34,8 @@ export class ShadowDirective {
 }
 
 @Directive({
-  selector: '[myShowErrors]'
+    selector: '[myShowErrors]',
+    standalone: true
 })
 export class ShowErrorsDirective implements OnChanges {
   private pipe = new ErrorMessagePipe();

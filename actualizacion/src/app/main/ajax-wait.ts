@@ -30,13 +30,13 @@ export class AjaxWaitInterceptor implements HttpInterceptor {
 }
 
 @Component({
-  selector: 'app-ajax-wait',
-  template: `
+    selector: 'app-ajax-wait',
+    template: `
   <div [hidden]="Oculto">
     <div class="ajax-wait"></div>
     <img src="assets/loading.gif">
   </div>`,
-  styles: [`
+    styles: [`
     .ajax-wait {
       position: fixed;
       background-color: black;
@@ -55,6 +55,7 @@ export class AjaxWaitInterceptor implements HttpInterceptor {
       opacity: 1;
     }
   `],
+    standalone: true,
 })
 export class AjaxWaitComponent implements DoCheck {
   private oculto = true;

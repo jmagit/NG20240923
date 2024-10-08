@@ -18,18 +18,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    BLOG_COMPONENTES,
-  ],
-  exports: [
-    // BLOG_COMPONENTES,
-    BlogComponent,
-    RouterModule,
-  ],
-  imports: [
-    CommonModule, FormsModule, RouterModule.forChild(routes),
-    MyCoreModule, CommonServicesModule,
-    PaginatorModule, CommonComponentsModule, MyCoreModule, EditorModule,
-  ]
+    exports: [
+        // BLOG_COMPONENTES,
+        BlogComponent,
+        RouterModule,
+    ],
+    imports: [
+        CommonModule, FormsModule, RouterModule.forChild(routes),
+        MyCoreModule, CommonServicesModule,
+        PaginatorModule, CommonComponentsModule, MyCoreModule, EditorModule,
+        BLOG_COMPONENTES,
+    ]
 })
 export class BlogModule { }

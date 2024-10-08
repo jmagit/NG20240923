@@ -12,9 +12,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ConfiguracionComponent, DatosComponent, PermisosComponent],
-  imports: [
-    CommonModule, RouterModule.forChild(routes),
-  ]
+    imports: [
+        CommonModule, RouterModule.forChild(routes),
+        ConfiguracionComponent, DatosComponent, PermisosComponent,
+    ]
 })
 export class ConfigModule { }

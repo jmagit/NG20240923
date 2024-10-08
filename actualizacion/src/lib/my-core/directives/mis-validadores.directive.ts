@@ -16,8 +16,9 @@ export function nifnieValidator(): ValidatorFn {
   };
 }
 @Directive({
-  selector: '[nifnie][formControlName],[nifnie][formControl],[nifnie][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: NIFNIEValidator, multi: true }]
+    selector: '[nifnie][formControlName],[nifnie][formControl],[nifnie][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: NIFNIEValidator, multi: true }],
+    standalone: true
 })
 export class NIFNIEValidator implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
@@ -32,8 +33,9 @@ export function uppercaseValidator(): ValidatorFn {
   };
 }
 @Directive({
-  selector: '[uppercase][formControlName],[uppercase][formControl],[uppercase][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: UppercaseValidator, multi: true }]
+    selector: '[uppercase][formControlName],[uppercase][formControl],[uppercase][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: UppercaseValidator, multi: true }],
+    standalone: true
 })
 export class UppercaseValidator implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
@@ -42,10 +44,11 @@ export class UppercaseValidator implements Validator {
 }
 
 @Directive({
-  selector: '[type][formControlName],[type][formControl],[type][ngModel]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: forwardRef(() => TypeValidator), multi: true }
-  ]
+    selector: '[type][formControlName],[type][formControl],[type][ngModel]',
+    providers: [
+        { provide: NG_VALIDATORS, useExisting: forwardRef(() => TypeValidator), multi: true }
+    ],
+    standalone: true
 })
 export class TypeValidator implements Validator {
   constructor(private elem: ElementRef) { }
@@ -68,8 +71,9 @@ export function ibanValidator(control: AbstractControl): { [key: string]: any } 
   return isIBAN(control.value.toString()) ? null : { iban: 'No es un IBAN valido' }
 }
 @Directive({
-  selector: '[iban][formControlName],[iban][formControl],[iban][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: IbanValidator, multi: true }]
+    selector: '[iban][formControlName],[iban][formControl],[iban][ngModel]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: IbanValidator, multi: true }],
+    standalone: true
 })
 export class IbanValidator implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {

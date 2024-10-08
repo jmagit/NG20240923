@@ -13,9 +13,8 @@ describe('FormularioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    declarations: [FormularioComponent, ErrorMessagePipe,],
     schemas: [NO_ERRORS_SCHEMA],
-    imports: [FormsModule],
+    imports: [FormsModule, FormularioComponent, ErrorMessagePipe],
     providers: [LoggerService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
 })
     .compileComponents();

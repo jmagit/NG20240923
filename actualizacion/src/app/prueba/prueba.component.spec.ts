@@ -11,10 +11,10 @@ describe('PruebaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PruebaComponent,  ],
-      providers: [ LoggerService ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
+    imports: [PruebaComponent],
+    providers: [LoggerService],
+    schemas: [NO_ERRORS_SCHEMA]
+})
     .compileComponents();
   });
 

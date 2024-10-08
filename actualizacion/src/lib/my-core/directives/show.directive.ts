@@ -1,8 +1,9 @@
 import { Directive, HostBinding, Input } from '@angular/core';
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[myShow]'
+    // eslint-disable-next-line @angular-eslint/directive-selector
+    selector: '[myShow]',
+    standalone: true
 })
 export class ShowDirective {
   @HostBinding('hidden') hidden: boolean = false;

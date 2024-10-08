@@ -7,8 +7,8 @@ describe('GraficoSvgComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GraficoSvgComponent ]
-    })
+    imports: [GraficoSvgComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(GraficoSvgComponent);

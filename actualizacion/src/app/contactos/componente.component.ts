@@ -1,13 +1,23 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, forwardRef } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap, RouterLink } from '@angular/router';
 import { ContactosViewModelService } from './servicios.service';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault, NgIf, NgFor, DatePipe } from '@angular/common';
+import { PaginatorModule } from 'primeng/paginator';
+import { FormsModule } from '@angular/forms';
+import { TypeValidator, IbanValidator } from '../../lib/my-core/directives/mis-validadores.directive';
+import { ShowErrorsMessagesComponent } from '../common-components/show-errors-messages/show-errors-messages.component';
+import { ShowErrorsDirective } from '../../lib/my-core/directives/atributos.directive';
+import { FormButtonsComponent } from '../common-components/form-buttons/form-buttons.component';
+import { ErrorMessagePipe } from '../../lib/my-core/pipes/cadenas.pipe';
 
 @Component({
-  selector: 'app-contactos',
-  templateUrl: './tmpl-anfitrion.component.html',
-  // providers: [ ContactosViewModelService ],
-  styleUrls: ['./componente.component.css']
+    selector: 'app-contactos',
+    templateUrl: './tmpl-anfitrion.component.html',
+    // providers: [ ContactosViewModelService ],
+    styleUrls: ['./componente.component.css'],
+    standalone: true,
+    imports: [NgSwitch, NgSwitchCase, forwardRef(() => ContactosAddComponent), forwardRef(() => ContactosEditComponent), forwardRef(() => ContactosViewComponent), NgSwitchDefault, forwardRef(() => ContactosListComponent)]
 })
 export class ContactosComponent implements OnInit, OnDestroy {
   constructor(protected vm: ContactosViewModelService) { }
@@ -71,9 +81,11 @@ export class ContactosViewComponent implements OnInit, OnDestroy {
 */
 
 @Component({
-  selector: 'app-contactos-list',
-  templateUrl: './tmpl-list.con-rutas.component.html',
-  styleUrls: ['./componente.component.css']
+    selector: 'app-contactos-list',
+    templateUrl: './tmpl-list.con-rutas.component.html',
+    styleUrls: ['./componente.component.css'],
+    standalone: true,
+    imports: [NgIf, RouterLink, NgFor, PaginatorModule]
 })
 export class ContactosListComponent implements OnInit {
   constructor(protected vm: ContactosViewModelService) { }
@@ -85,9 +97,11 @@ export class ContactosListComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-contactos-add',
-  templateUrl: './tmpl-form.component.html',
-  styleUrls: ['./componente.component.css']
+    selector: 'app-contactos-add',
+    templateUrl: './tmpl-form.component.html',
+    styleUrls: ['./componente.component.css'],
+    standalone: true,
+    imports: [FormsModule, TypeValidator, ShowErrorsMessagesComponent, IbanValidator, ShowErrorsDirective, FormButtonsComponent, ErrorMessagePipe]
 })
 export class ContactosAddComponent implements OnInit {
   constructor(protected vm: ContactosViewModelService) { }
@@ -98,9 +112,11 @@ export class ContactosAddComponent implements OnInit {
 }
 
 @Component({
-  selector: 'app-contactos-edit',
-  templateUrl: './tmpl-form.component.html',
-  styleUrls: ['./componente.component.css']
+    selector: 'app-contactos-edit',
+    templateUrl: './tmpl-form.component.html',
+    styleUrls: ['./componente.component.css'],
+    standalone: true,
+    imports: [FormsModule, TypeValidator, ShowErrorsMessagesComponent, IbanValidator, ShowErrorsDirective, FormButtonsComponent, ErrorMessagePipe]
 })
 export class ContactosEditComponent implements OnInit, OnDestroy {
   private obs$: any;
@@ -124,9 +140,11 @@ export class ContactosEditComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-contactos-view',
-  templateUrl: './tmpl-view.component.html',
-  styleUrls: ['./componente.component.css']
+    selector: 'app-contactos-view',
+    templateUrl: './tmpl-view.component.html',
+    styleUrls: ['./componente.component.css'],
+    standalone: true,
+    imports: [DatePipe]
 })
 export class ContactosViewComponent implements OnInit, OnDestroy {
   private obs$: any;
