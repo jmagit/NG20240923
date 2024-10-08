@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormArray, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { User, RegisterUserDAO, LoginService } from '../security.service';
 import { Router } from '@angular/router';
 import { NotificationService, NotificationType } from 'src/app/common-services';
@@ -11,7 +11,7 @@ import { LoggerService } from 'src/lib/my-core';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-  public miForm: FormGroup = new FormGroup({});
+  public miForm: UntypedFormGroup = new UntypedFormGroup({});
   private model: User = new User();
 
   constructor(private dao: RegisterUserDAO, private notify: NotificationService,
@@ -27,14 +27,14 @@ export class RegisterUserComponent implements OnInit {
     // this.model.roles.forEach(r => fa.push(
     //   new FormGroup({ role: new FormControl(r.role , Validators.required) })
     // ));
-    this.miForm = new FormGroup({
-      idUsuario: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.email]),
-      nombre: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      password: new FormGroup({
-        passwordValue: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        passwordConfirm: new FormControl('', Validators.minLength(2)),
+    this.miForm = new UntypedFormGroup({
+      idUsuario: new UntypedFormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.email]),
+      nombre: new UntypedFormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      password: new UntypedFormGroup({
+        passwordValue: new UntypedFormControl('', [Validators.required, Validators.minLength(2)]),
+        passwordConfirm: new UntypedFormControl('', Validators.minLength(2)),
       }, this.passwordMatchValidator()),
-      roles: new FormArray([])
+      roles: new UntypedFormArray([])
     });
     // for (const name in this.miForm.controls) {
     //   if (this.miForm.controls[name] instanceof FormControl) {
@@ -81,7 +81,7 @@ export class RegisterUserComponent implements OnInit {
       }
     return msg.trim();
   }
-  private formatErrorMessage(cntr: FormControl): void {
+  private formatErrorMessage(cntr: UntypedFormControl): void {
     let msg = '';
     for (let err in cntr.errors) {
       switch (err) {
@@ -115,12 +115,12 @@ export class RegisterUserComponent implements OnInit {
     cntr.setErrors(Object.assign({}, cntr.errors, { 'customMsg': msg }));
   }
   addRole(): void {
-    (this.miForm.get('roles') as FormArray).push(
-      new FormGroup({ role: new FormControl('Usuarios', Validators.required) })
+    (this.miForm.get('roles') as UntypedFormArray).push(
+      new UntypedFormGroup({ role: new UntypedFormControl('Usuarios', Validators.required) })
     );
   }
   deleteRole(ind: number): void {
-    (this.miForm.get('roles') as FormArray).removeAt(ind);
+    (this.miForm.get('roles') as UntypedFormArray).removeAt(ind);
   }
   send(): void {
     const data = this.miForm.value;

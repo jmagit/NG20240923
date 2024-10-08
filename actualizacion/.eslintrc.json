@@ -27,17 +27,13 @@
             "style": "camelCase"
           }
         ],
-        "@angular-eslint/component-selector": [
+        "@angular-eslint/component-selector": "warn",
+        "@typescript-eslint/no-unused-vars": [
           "error",
           {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
+            "argsIgnorePattern": "^_"
           }
-        ],
-        "@angular-eslint/component-selector": "warn",
-        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
-
+        ]
       }
     },
     {

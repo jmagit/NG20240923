@@ -1,4 +1,4 @@
-import { FormControl, FormsModule } from '@angular/forms';
+import { UntypedFormControl, FormsModule } from '@angular/forms';
 import { ibanValidator, isNotBlankValidator, NIFNIEValidator, nifnieValidator, uppercaseValidator, UppercaseValidator } from './mis-validadores.directive'
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -7,7 +7,7 @@ describe('Mis validadores', () => {
   describe('isNotBlankValidator', () => {
     describe('OK', () => {
       it('Una cadena', () => {
-        const valor = new FormControl('valor')
+        const valor = new UntypedFormControl('valor')
 
         const result = isNotBlankValidator(valor)
 
@@ -15,13 +15,13 @@ describe('Mis validadores', () => {
       });
 
       it('Con un 0', () => {
-        expect(isNotBlankValidator(new FormControl(0))).toBeNull()
+        expect(isNotBlankValidator(new UntypedFormControl(0))).toBeNull()
       });
 
     });
     describe('KO', () => {
       it('Solo blancos', () => {
-        const valor = new FormControl('    ')
+        const valor = new UntypedFormControl('    ')
 
         let result = isNotBlankValidator(valor)
 
@@ -30,7 +30,7 @@ describe('Mis validadores', () => {
         expect(result?.['isNotBlank']).toBe('No puede estar vacío')
       });
       it('cadena vacía', () => {
-        const valor = new FormControl('')
+        const valor = new UntypedFormControl('')
 
         const result = isNotBlankValidator(valor)
 
@@ -41,7 +41,7 @@ describe('Mis validadores', () => {
 
       ['', '    ', null, undefined].forEach(item => {
         it(`con valor "${item}"`, () => {
-          const valor = new FormControl(item)
+          const valor = new UntypedFormControl(item)
 
           const result = isNotBlankValidator(valor)
 
@@ -122,7 +122,7 @@ describe('Otros ejemplos', () => {
     });
     describe('KO', () => {
       it('se ha quedado a medias', () => {
-        const valor = new FormControl('')
+        const valor = new UntypedFormControl('')
 
         const result = isNotBlankValidator(valor)
 
@@ -136,7 +136,7 @@ describe('Otros ejemplos', () => {
 
       ['', '    ', null, undefined].forEach(item => {
         it(`con valor "${item}"`, () => {
-          const valor = new FormControl(item)
+          const valor = new UntypedFormControl(item)
 
           const result = isNotBlankValidator(valor)
 
@@ -151,7 +151,7 @@ describe('Otros ejemplos', () => {
 
 describe('nifnieValidator', () => {
   const esNIFNIE = nifnieValidator()
-  const control = new FormControl('input');
+  const control = new UntypedFormControl('input');
 
   describe('NIFNIE OK', () => {
     ['12345678z', '12345678Z', '1234S', '4g', 'X1234567L', 'Z1234567R', null, ''].forEach(caso => {
@@ -181,7 +181,7 @@ describe('nifnieValidator', () => {
   template: `<input type="text" [(ngModel)]="valor" #myInput="ngModel" nifnie >`,
 })
 class nifnieValidatorHostComponent {
-  @ViewChild('myInput') control?: FormControl
+  @ViewChild('myInput') control?: UntypedFormControl
   valor = '';
 }
 
@@ -230,7 +230,7 @@ describe('NIFNIEValidator', () => {
 });
 
 describe('uppercaseValidator', () => {
-  const control = new FormControl('input');
+  const control = new UntypedFormControl('input');
   describe('Uppercase OK', () => {
     ['12345678', 'CASA', null].forEach(caso => {
       it(`Uppercase: ${caso}`, () => {
@@ -258,7 +258,7 @@ describe('uppercaseValidator', () => {
 
 
 describe('ibanValidator', () => {
-  const control = new FormControl('input');
+  const control = new UntypedFormControl('input');
   const validator = ibanValidator
   describe('OK', () => {
     ['ES7921000813610123456789', 'BE71096123456769', null, ''].forEach(caso => {
