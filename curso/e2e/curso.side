@@ -662,6 +662,98 @@
       ],
       "value": "2.5"
     }]
+  }, {
+    "id": "9ba5dd23-400a-4d2f-ba14-e40f8f87d8f0",
+    "name": "Login",
+    "commands": [{
+      "id": "ce495b2a-257f-4df2-a105-c725c677c055",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a501d58-65f7-406c-8a7d-be4f0c889f55",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1214x656",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae2e05f3-0b7f-493e-a05d-676d8645122c",
+      "comment": "",
+      "command": "click",
+      "target": "name=usr",
+      "targets": [
+        ["name=usr", "name"],
+        ["css=.form-control-sm:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='usr']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4854da4-32d9-465b-afd9-d477566f7189",
+      "comment": "",
+      "command": "type",
+      "target": "name=usr",
+      "targets": [
+        ["name=usr", "name"],
+        ["css=.form-control-sm:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='usr']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "emp@example.com"
+    }, {
+      "id": "2a2ae109-8e0a-4ad3-96f3-339fa7078cc1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0820c7f9-86ac-4d61-b861-f727d8f8585f",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Desconectar']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/small/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78b58bfc-3e27-4f63-92c9-fa55220f96fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Desconectar']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/small/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3fc3b67-3063-4884-a94f-66546de7dd0b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//div[@id='offcanvasNavbarDark']/div[2]/app-login/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "a1f993a5-e94f-4d0f-a3b9-6b9fee26a5dd",
