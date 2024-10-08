@@ -4,7 +4,7 @@ import { NotificationService, NotificationType } from '../common-services';
 import { GeolocationComponent } from '../geolocation/geolocation.component';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf, NgClass, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe, TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
+import { NgClass, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe, TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { TypeValidator } from '../../lib/my-core/directives/mis-validadores.directive';
 import { CardComponent } from '../common-components/card.component';
 import { WindowConfirmDirective, ShadowDirective } from '../../lib/my-core/directives/atributos.directive';
@@ -21,33 +21,31 @@ import { FilterPipe, OrderByPipe } from '../../lib/my-core/pipes/colecciones.pip
     styleUrls: ['./demos.component.css'],
     standalone: true,
     imports: [
-        GeolocationComponent,
-        CalculadoraComponent,
-        FormsModule,
-        NgFor,
-        TypeValidator,
-        CardComponent,
-        WindowConfirmDirective,
-        ShadowDirective,
-        ShowDirective,
-        NgIf,
-        UnlessDirective,
-        NgClass,
-        SelectDirective,
-        MySizerComponent,
-        UpperCasePipe,
-        JsonPipe,
-        SlicePipe,
-        DecimalPipe,
-        TitleCasePipe,
-        CurrencyPipe,
-        DatePipe,
-        ElipsisPipe,
-        CapitalizePipe,
-        ExecPipe,
-        FilterPipe,
-        OrderByPipe,
-    ],
+    GeolocationComponent,
+    CalculadoraComponent,
+    FormsModule,
+    TypeValidator,
+    CardComponent,
+    WindowConfirmDirective,
+    ShadowDirective,
+    ShowDirective,
+    UnlessDirective,
+    NgClass,
+    SelectDirective,
+    MySizerComponent,
+    UpperCasePipe,
+    JsonPipe,
+    SlicePipe,
+    DecimalPipe,
+    TitleCasePipe,
+    CurrencyPipe,
+    DatePipe,
+    ElipsisPipe,
+    CapitalizePipe,
+    ExecPipe,
+    FilterPipe,
+    OrderByPipe
+],
 })
 export class DemosComponent implements OnInit, OnDestroy {
   private suscriptor: Unsubscribable | undefined;

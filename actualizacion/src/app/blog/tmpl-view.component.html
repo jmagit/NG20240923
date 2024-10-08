@@ -1,4 +1,6 @@
-<img *ngIf="VM.Elemento.fotourl" [src]="VM.Elemento.fotourl">
+@if (VM.Elemento.fotourl) {
+  <img [src]="VM.Elemento.fotourl">
+}
 <div class="blog-post">
   <h2 class="blog-post-title">{{VM.Elemento.titulo}}&nbsp;
     <button type="button" [routerLink]="['/blog', VM.Elemento.id, 'edit']" class="btn btn-link"><i class="fas fa-pen"></i></button>
@@ -7,9 +9,9 @@
     {{VM.Elemento.fecha | date:'dd/MM/yyyy'}} by {{VM.Elemento.autor}}
   </p>
   <hr>
-  <div [innerHTML]="VM.Elemento.texto"></div>
-  <hr>
-  <p class="blog-pagination text-right">
-    <input type="button" value="Volver" (click)="VM.cancel()" class="btn btn-outline-info">
-  </p>
-</div>
+    <div [innerHTML]="VM.Elemento.texto"></div>
+    <hr>
+      <p class="blog-pagination text-right">
+        <input type="button" value="Volver" (click)="VM.cancel()" class="btn btn-outline-info">
+      </p>
+    </div>

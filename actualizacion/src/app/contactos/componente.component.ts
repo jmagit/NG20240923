@@ -2,7 +2,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap, RouterLink } from '@angular/router';
 import { ContactosViewModelService } from './servicios.service';
-import { NgSwitch, NgSwitchCase, NgSwitchDefault, NgIf, NgFor, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { PaginatorModule } from 'primeng/paginator';
 import { FormsModule } from '@angular/forms';
 import { TypeValidator, IbanValidator } from '../../lib/my-core/directives/mis-validadores.directive';
@@ -17,7 +17,7 @@ import { ErrorMessagePipe } from '../../lib/my-core/pipes/cadenas.pipe';
     // providers: [ ContactosViewModelService ],
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [NgSwitch, NgSwitchCase, forwardRef(() => ContactosAddComponent), forwardRef(() => ContactosEditComponent), forwardRef(() => ContactosViewComponent), NgSwitchDefault, forwardRef(() => ContactosListComponent)]
+    imports: [forwardRef(() => ContactosAddComponent), forwardRef(() => ContactosEditComponent), forwardRef(() => ContactosViewComponent), forwardRef(() => ContactosListComponent)]
 })
 export class ContactosComponent implements OnInit, OnDestroy {
   constructor(protected vm: ContactosViewModelService) { }
@@ -85,7 +85,7 @@ export class ContactosViewComponent implements OnInit, OnDestroy {
     templateUrl: './tmpl-list.con-rutas.component.html',
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [NgIf, RouterLink, NgFor, PaginatorModule]
+    imports: [RouterLink, PaginatorModule]
 })
 export class ContactosListComponent implements OnInit {
   constructor(protected vm: ContactosViewModelService) { }

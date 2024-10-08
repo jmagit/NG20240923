@@ -2,7 +2,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap, RouterLink } from '@angular/router';
 import { BlogViewModelService } from './servicios.service';
-import { NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgIf, SlicePipe, DatePipe } from '@angular/common';
+import { SlicePipe, DatePipe } from '@angular/common';
 import { ElipsisPipe, StripTagsPipe } from '../../lib/my-core/pipes/cadenas.pipe';
 import { FormsModule } from '@angular/forms';
 import { TypeValidator } from '../../lib/my-core/directives/mis-validadores.directive';
@@ -14,7 +14,7 @@ import { EditorModule } from 'primeng/editor';
     // providers: [ BlogViewModelService ],
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [NgSwitch, NgSwitchCase, forwardRef(() => BlogAddComponent), forwardRef(() => BlogEditComponent), forwardRef(() => BlogViewComponent), NgSwitchDefault, forwardRef(() => BlogListComponent)]
+    imports: [forwardRef(() => BlogAddComponent), forwardRef(() => BlogEditComponent), forwardRef(() => BlogViewComponent), forwardRef(() => BlogListComponent)]
 })
 export class BlogComponent implements OnInit, OnDestroy {
   constructor(protected vm: BlogViewModelService) { }
@@ -82,7 +82,7 @@ export class BlogViewComponent implements OnInit, OnDestroy {
     templateUrl: './tmpl-list.component.html',
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [NgFor, RouterLink, NgIf, SlicePipe, DatePipe, ElipsisPipe, StripTagsPipe]
+    imports: [RouterLink, SlicePipe, DatePipe, ElipsisPipe, StripTagsPipe]
 })
 export class BlogListComponent implements OnInit {
   constructor(protected vm: BlogViewModelService) { }
@@ -98,7 +98,7 @@ export class BlogListComponent implements OnInit {
     templateUrl: './tmpl-form.component.html',
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [FormsModule, NgIf, TypeValidator, EditorModule]
+    imports: [FormsModule, TypeValidator, EditorModule]
 })
 export class BlogAddComponent implements OnInit {
   constructor(protected vm: BlogViewModelService) { }
@@ -113,7 +113,7 @@ export class BlogAddComponent implements OnInit {
     templateUrl: './tmpl-form.component.html',
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [FormsModule, NgIf, TypeValidator, EditorModule]
+    imports: [FormsModule, TypeValidator, EditorModule]
 })
 export class BlogEditComponent implements OnInit, OnDestroy {
   private obs$: any;
@@ -141,7 +141,7 @@ export class BlogEditComponent implements OnInit, OnDestroy {
     templateUrl: './tmpl-view.component.html',
     styleUrls: ['./componente.component.css'],
     standalone: true,
-    imports: [NgIf, RouterLink, DatePipe]
+    imports: [RouterLink, DatePipe]
 })
 export class BlogViewComponent implements OnInit, OnDestroy {
   private obs$: any;

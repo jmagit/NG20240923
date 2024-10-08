@@ -4,14 +4,14 @@ import { User, RegisterUserDAO, LoginService } from '../security.service';
 import { Router } from '@angular/router';
 import { NotificationService, NotificationType } from 'src/app/common-services';
 import { LoggerService } from 'src/lib/my-core';
-import { NgFor, JsonPipe } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'app-register-user',
     templateUrl: './register-user.component.html',
     styleUrls: ['./register-user.component.css'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, NgFor, JsonPipe]
+    imports: [FormsModule, ReactiveFormsModule, JsonPipe]
 })
 export class RegisterUserComponent implements OnInit {
   public miForm: UntypedFormGroup = new UntypedFormGroup({});

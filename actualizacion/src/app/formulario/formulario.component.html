@@ -5,14 +5,14 @@
 <form #miForm="ngForm">
   <div class="mb-2">
     <label class="form-label" for="id">código:</label>
-    <ng-container *ngIf="modo === 'add'">
+    @if (modo === 'add') {
       <input class="form-control" type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required
         min="0">
       <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output>
-    </ng-container>
-    <ng-container *ngIf="modo === 'edit'">
+    }
+    @if (modo === 'edit') {
       <output id="id" [textContent]="elemento.id"></output>
-    </ng-container>
+    }
   </div>
   <div class="mb-2">
     <label class="form-label" for="nombre">nombre:</label>
@@ -42,7 +42,7 @@
     <input class="form-control" type="text" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
       pattern="^\d{1,8}[A-Za-z]$" nifnie>
     <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg:'Tiene que tener entre 1 y 8 dígitos, terminado
-      en una letra'}}</output>{{nif.errors | json}}
+    en una letra'}}</output>{{nif.errors | json}}
   </div>
   <div class="mb-2">
     <label class="form-label" for="correo">correo:</label>

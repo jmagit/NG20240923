@@ -3,7 +3,7 @@ import { LOGIN_FORM_CLOSE_EVENT, LOGIN_FORM_OPEN_EVENT, LoginService } from '../
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventBusService, NotificationService } from 'src/app/common-services';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 import { Subscription } from 'rxjs';
 
 export class BaseComponent {
@@ -52,7 +52,7 @@ export class BaseComponent {
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     standalone: true,
-    imports: [NgIf, FormsModule],
+    imports: [FormsModule],
 })
 export class LoginComponent extends BaseComponent implements OnDestroy {
   private login$: Subscription;
@@ -79,7 +79,7 @@ export class LoginComponent extends BaseComponent implements OnDestroy {
     templateUrl: './login-form.component.html',
     styleUrls: ['./login.component.css'],
     standalone: true,
-    imports: [NgIf, FormsModule],
+    imports: [FormsModule],
 })
 export class LoginFormComponent extends BaseComponent implements OnInit, OnDestroy {
   errorMessage = '';

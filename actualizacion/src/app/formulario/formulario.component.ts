@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { NotificationService } from '../common-services';
 import { AUTH_REQUIRED } from '../security';
 import { FormsModule } from '@angular/forms';
-import { NgIf, JsonPipe } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { TypeValidator, NIFNIEValidator } from '../../lib/my-core/directives/mis-validadores.directive';
 import { ErrorMessagePipe } from '../../lib/my-core/pipes/cadenas.pipe';
 
@@ -44,7 +44,7 @@ export class PersonasDAOService extends RESTDAOService<any, any> {
     templateUrl: './formulario.component.html',
     styleUrls: ['./formulario.component.css'],
     standalone: true,
-    imports: [FormsModule, NgIf, TypeValidator, NIFNIEValidator, JsonPipe, ErrorMessagePipe]
+    imports: [FormsModule, TypeValidator, NIFNIEValidator, JsonPipe, ErrorMessagePipe]
 })
 export class FormularioComponent {
   modo: 'add' | 'edit' = 'add'

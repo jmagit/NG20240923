@@ -1,21 +1,23 @@
-<ng-container *ngIf="visible">
-  <ng-container *ngIf="!loginSrv.isAuthenticated">
+@if (visible) {
+  @if (!loginSrv.isAuthenticated) {
     <form #logForm="ngForm" class="form-inline my-2 my-lg-0">
       <div class="input-group" role="group" aria-label="Login Form">
         <input name="usr" class="form-control-sm" [size]="8" type="text" [(ngModel)]="txtUsuario" required minlength="4"
           placeholder="Usuario">
-        <input name="pwd" class="form-control-sm" [size]="8" type="password" [(ngModel)]="txtPassword" required
-          minlength="8" placeholder="Contraseña" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$">
-        <div class="input-group-append">
-          <input class="btn btn-outline-success btn-sm" type="button" [disabled]="logForm.invalid" value="Acceder"
-            (click)="logInOut()">
-          <input class="btn btn-outline-success btn-sm" type="button" value="Registrar" (click)="registrar()">
-        </div>
-      </div>
-    </form>
-  </ng-container>
-  <small *ngIf="loginSrv.isAuthenticated">
-    Hola {{loginSrv.Name}}
-    <input class="btn btn-outline-success btn-sm" type="button" value="Desconectar" (click)="logInOut()">
-  </small>
-</ng-container>
+          <input name="pwd" class="form-control-sm" [size]="8" type="password" [(ngModel)]="txtPassword" required
+            minlength="8" placeholder="Contraseña" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$">
+            <div class="input-group-append">
+              <input class="btn btn-outline-success btn-sm" type="button" [disabled]="logForm.invalid" value="Acceder"
+                (click)="logInOut()">
+                <input class="btn btn-outline-success btn-sm" type="button" value="Registrar" (click)="registrar()">
+              </div>
+            </div>
+          </form>
+        }
+        @if (loginSrv.isAuthenticated) {
+          <small>
+            Hola {{loginSrv.Name}}
+            <input class="btn btn-outline-success btn-sm" type="button" value="Desconectar" (click)="logInOut()">
+          </small>
+        }
+      }

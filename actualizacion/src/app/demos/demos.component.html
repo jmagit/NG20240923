@@ -16,26 +16,30 @@
       <tfoot>
         <tr>
           <td colspan="3">Idioma: <select [(ngModel)]="idioma">
-              <option *ngFor="let i of idiomas" [value]="i.codigo">{{i.region}}</option>
-            </select>
-          </td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <tr *ngFor="let r of calculos | slice:-10">
+            @for (i of idiomas; track i) {
+              <option [value]="i.codigo">{{i.region}}</option>
+            }
+          </select>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      @for (r of calculos | slice:-10; track r) {
+        <tr>
           <td class="text-right">{{r.pos}}</td>
           <td>{{r.origen}}</td>
           <td class="text-right">{{r.valor | number:'1.0-8':idioma }}</td>
         </tr>
-      </tbody>
-    </table>
-    <div class="col">
-      <calculadora [init]="valCalculadora" (updated)="ponResultado('DER', $event)"></calculadora>
-    </div>
+      }
+    </tbody>
+  </table>
+  <div class="col">
+    <calculadora [init]="valCalculadora" (updated)="ponResultado('DER', $event)"></calculadora>
   </div>
-  <div class="row">
-    <input type="number" [(ngModel)]="valCalculadora">
-  </div>
+</div>
+<div class="row">
+  <input type="number" [(ngModel)]="valCalculadora">
+</div>
 </div>
 
 <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
@@ -57,12 +61,14 @@
 
 <p [hidden]="!visible" myShadow>Ahora me ves</p>
 <p [myShow]="visible">Ahora me ves (myShow)</p>
-<p *ngIf="visible">Ahora existo</p>
+@if (visible) {
+  <p>Ahora existo</p>
+}
 
 <p *myUnless="visible">Ahora soy unless</p>
 
 <ng-template [myUnless]="visible">
-<p>La plantilla</p>
+  <p>La plantilla</p>
 </ng-template>
 
 <p [ngClass]="estetica">
@@ -76,17 +82,19 @@
 <p>Calcula: 2 + 2 = {{2 + 2}} = {{ calcula | exec:2:fontSize | currency:'EUR':'symbol':'1.2-2' }}</p>
 
 <ul>
-  <li *ngFor="let item of listado | slice:-5; let ind=index; let fondo=odd;"
-    [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
-    {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
-  </li>
+  @for (item of listado | slice:-5; track item; let ind = $index; let fondo = $odd) {
+    <li
+      [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
+      {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
+    </li>
+  }
 </ul>
 <ol>
-  <ng-template ngFor let-item [ngForOf]="listado" let-items="ngForOf" let-ind="index" let-fondo="odd">
+  @for (item of listado; track item; let items = $ngForOf; let ind = $index; let fondo = $odd) {
     <li [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
       {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
     </li>
-  </ng-template>
+  }
 </ol>
 <ul>
   <li *select="let item from listado where filtro order ['-nombre', 'id']">
@@ -94,16 +102,20 @@
   </li>
 </ul>
 <ol>
-  <li *ngFor="let item of listado | filter:filtro | orderBy:['-nombre', 'id']; let ind=index; let fondo=odd;"
-    [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
-    {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
-  </li>
+  @for (item of listado | filter:filtro | orderBy:['-nombre', 'id']; track item; let ind = $index; let fondo = $odd) {
+    <li
+      [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
+      {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{ind+1}} de {{listado.length}}]
+    </li>
+  }
 </ol>
 
 <p>
   <select [(ngModel)]="idProvincia">
     <option value="">--Elige opción--</option>
-    <option *ngFor="let p of listado" [value]="p.id">{{p.nombre | capitalize}}</option>
+    @for (p of listado; track p) {
+      <option [value]="p.id">{{p.nombre | capitalize}}</option>
+    }
   </select>
   Seleccionado: {{idProvincia}}
   <input type="text" value="Tabarnia" #txtProvincia>

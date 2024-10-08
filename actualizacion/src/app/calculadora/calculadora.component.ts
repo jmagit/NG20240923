@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { LoggerService } from 'src/lib/my-core';
 import { NotificationService, NotificationType } from '../common-services';
-import { NgIf, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { ToComaDecimalPipe } from '../../lib/my-core/pipes/numericos.pipe';
 
 @Component({
@@ -9,7 +9,7 @@ import { ToComaDecimalPipe } from '../../lib/my-core/pipes/numericos.pipe';
     templateUrl: './calculadora.component.html',
     styleUrls: ['./calculadora.component.scss'],
     standalone: true,
-    imports: [NgIf, SlicePipe, ToComaDecimalPipe]
+    imports: [SlicePipe, ToComaDecimalPipe]
 })
 export class CalculadoraComponent implements OnInit, OnChanges {
   public readonly Math = Math;
