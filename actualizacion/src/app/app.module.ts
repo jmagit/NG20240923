@@ -11,10 +11,10 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MainModule } from './main';
 import { AuthInterceptor, SecurityModule } from './security';
-import { CommonComponentsModule } from './common-components';
-import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
+
+import { ERROR_LEVEL, LoggerService } from '@my/core';
 import { environment } from 'src/environments/environment';
-import { CommonServicesModule } from './common-services';
+
 import { DemosComponent } from './demos/demos.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
@@ -29,14 +29,14 @@ import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule, FormsModule,
-        AppRoutingModule, MainModule, SecurityModule, CommonComponentsModule,
-        MyCoreModule, CommonServicesModule, ContactosModule, DemosComponent,
-        DinamicoComponent,
-        CalculadoraComponent,
-        GraficoSvgComponent,
-        FormularioComponent,
-        GeolocationComponent,
-        PruebaComponent], providers: [
+    AppRoutingModule, MainModule, SecurityModule,
+    ContactosModule, DemosComponent,
+    DinamicoComponent,
+    CalculadoraComponent,
+    GraficoSvgComponent,
+    FormularioComponent,
+    GeolocationComponent,
+    PruebaComponent], providers: [
         LoggerService,
         { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
         { provide: LOCALE_ID, useValue: 'es-ES' },

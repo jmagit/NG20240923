@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { MyCoreModule } from 'src/lib/my-core';
-import { CommonServicesModule } from '../common-services';
+
+
 import { BlogComponent, BLOG_COMPONENTES, BlogAddComponent, BlogEditComponent, BlogListComponent, BlogViewComponent } from './componente.component';
 import {PaginatorModule} from 'primeng/paginator';
 import {EditorModule} from 'primeng/editor';
-import { CommonComponentsModule } from '../common-components';
+
 
 const routes: Routes = [
   { path: '', component: BlogListComponent },
@@ -24,10 +24,9 @@ const routes: Routes = [
         RouterModule,
     ],
     imports: [
-        CommonModule, FormsModule, RouterModule.forChild(routes),
-        MyCoreModule, CommonServicesModule,
-        PaginatorModule, CommonComponentsModule, MyCoreModule, EditorModule,
-        BLOG_COMPONENTES,
-    ]
+    CommonModule, FormsModule, RouterModule.forChild(routes),
+    PaginatorModule, EditorModule,
+    BLOG_COMPONENTES,
+]
 })
 export class BlogModule { }
