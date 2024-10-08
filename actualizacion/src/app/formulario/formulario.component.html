@@ -1,0 +1,56 @@
+<div class="btn-group">
+  <input class="btn btn-link" type="button" value="add" (click)="add()">
+  <input class="btn btn-link" type="button" value="edit" (click)="edit(0)">
+</div>
+<form #miForm="ngForm">
+  <div class="mb-2">
+    <label class="form-label" for="id">código:</label>
+    <ng-container *ngIf="modo === 'add'">
+      <input class="form-control" type="number" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required
+        min="0">
+      <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output>
+    </ng-container>
+    <ng-container *ngIf="modo === 'edit'">
+      <output id="id" [textContent]="elemento.id"></output>
+    </ng-container>
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="nombre">nombre:</label>
+    <input class="form-control" type="text" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"
+      required minlength="2" maxlength="10" upp>
+    <output class="error" [hidden]="nombre.valid">{{nombre.errors | errormsg}}</output>
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="apellidos">apellidos:</label>
+    <input class="form-control" type="text" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos"
+      #apellidos="ngModel" minlength="2" maxlength="10">
+    <output class="error" [hidden]="apellidos.valid">{{apellidos.errors | errormsg}}</output>
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="edad">edad:</label>
+    <input class="form-control" type="number" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel" min="16"
+      max="67">
+    <output class="error" [hidden]="edad.valid">{{edad.errors | errormsg}}</output>
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="fecha">fecha:</label>
+    <input class="form-control" type="date" id="fecha" name="fecha" [(ngModel)]="elemento.fecha" #fecha="ngModel">
+    <output class="error" [hidden]="fecha.valid">{{fecha.errors | errormsg}}</output>
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="nif">nif:</label>
+    <input class="form-control" type="text" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
+      pattern="^\d{1,8}[A-Za-z]$" nifnie>
+    <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg:'Tiene que tener entre 1 y 8 dígitos, terminado
+      en una letra'}}</output>{{nif.errors | json}}
+  </div>
+  <div class="mb-2">
+    <label class="form-label" for="correo">correo:</label>
+    <input class="form-control" type="email" id="correo" name="correo" [(ngModel)]="elemento.correo" #correo="ngModel">
+    <output class="error" [hidden]="correo.valid">{{correo.errors | errormsg}}</output>
+  </div>
+  <div class="btn-group">
+    <input class="btn btn-primary" type="button" value="enviar" (click)="send()" [disabled]="miForm.invalid">
+    <input class="btn btn-info" type="button" value="volver" (click)="cancel()">
+  </div>
+</form>
